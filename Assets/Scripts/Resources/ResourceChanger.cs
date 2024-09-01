@@ -6,6 +6,7 @@ namespace TowerDefence.Resources
     {
         [SerializeField]
         private ResourceManager resourceManager;
+
         [SerializeField]
         private ResourceType type;
 

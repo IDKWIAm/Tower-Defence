@@ -7,11 +7,13 @@ namespace TowerDefence.Resources
     {
         [SerializeField]
         private ResourceManager resourceManager;
+
         [SerializeField]
         private ResourceType type;
+
         [SerializeField]
         private UnityEvent<int> onChange;
-        
+
         public ResourceType Type => type;
         public UnityEvent<int> OnChange => onChange;
 

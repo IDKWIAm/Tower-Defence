@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefence.Resources
@@ -11,11 +13,12 @@ namespace TowerDefence.Resources
 
         private readonly List<ResourceChangeListener> _changeListeners = new();
 
-
-        public int GetAmount(ResourceType type)
+        private void Awake()
         {
-            return GetResource(type).Amount;
+            RemoveDuplicates();
+            resources.ForEach(resource => resource.ClampAmount());
         }
+
         public void AddAmount(ResourceType type, int amount)
         {
             var resource = GetResource(type);
@@ -24,14 +27,23 @@ namespace TowerDefence.Resources
                 .ForEach(listener => listener.OnChange.Invoke(resource.Amount));
         }
 
-        private Resource GetResource(ResourceType type)
+        public Resource GetResource(ResourceType type)
         {
-            return resources.FirstOrDefault(resource => resource.Type == type);
+            RemoveDuplicates();
+            if (resources.All(r => r.Type != type))
+            {
+                throw new Exception($"Resource type {type.ToString()} does not exist");
+            }
+            return resources.First(resource => resource.Type == type);
         }
 
         public void AddListener(ResourceChangeListener listener)
         {
             _changeListeners.Add(listener);
+        }
+        private void RemoveDuplicates()
+        {
+            resources = resources.DistinctBy(res => res.Type).ToList();
         }
     }
 }
