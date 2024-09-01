@@ -19,10 +19,10 @@ namespace TowerDefence.Resources
             resources.ForEach(resource => resource.ClampAmount());
         }
 
-        public void AddAmount(ResourceType type, int amount)
+        public void ModifyAmount(ResourceType type, int delta)
         {
             var resource = GetResource(type);
-            resource.AddAmount(amount);
+            resource.ModifyAmount(delta);
             _changeListeners.Where(listener => listener.Type == type).ToList()
                 .ForEach(listener => listener.OnChange.Invoke(resource.Amount));
         }
@@ -30,9 +30,9 @@ namespace TowerDefence.Resources
         public Resource GetResource(ResourceType type)
         {
             RemoveDuplicates();
-            if (resources.All(r => r.Type != type))
+            if (resources.All(res => res.Type != type))
             {
-                throw new Exception($"Resource type {type.ToString()} does not exist");
+                throw new Exception($@"Resource type {type.DisplayName()} not defined in Resource Manager ""{gameObject.name}""");
             }
             return resources.First(resource => resource.Type == type);
         }

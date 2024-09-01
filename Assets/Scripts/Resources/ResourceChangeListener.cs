@@ -15,10 +15,9 @@ namespace TowerDefence.Resources
         [SerializeField]
         private UnityEvent<int> onChange;
 
+        public ResourceManager Manager => resourceManager;
         public ResourceType Type => type;
         public UnityEvent<int> OnChange => onChange;
-
-        public ResourceManager Manager => resourceManager;
 
         private void Awake()
         {
