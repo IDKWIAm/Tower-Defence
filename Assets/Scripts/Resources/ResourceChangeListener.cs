@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace TowerDefence.Resources
 {
+    [DisallowMultipleComponent]
     public class ResourceChangeListener : MonoBehaviour
     {
         [SerializeField]
@@ -17,9 +18,11 @@ namespace TowerDefence.Resources
         public ResourceType Type => type;
         public UnityEvent<int> OnChange => onChange;
 
+        public ResourceManager Manager => resourceManager;
+
         private void Awake()
         {
-            resourceManager.AddListener(this);
+            Manager.AddListener(this);
         }
     }
 }
