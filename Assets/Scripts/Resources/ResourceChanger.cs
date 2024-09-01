@@ -12,7 +12,7 @@ namespace TowerDefence.Resources
 
         public void AddAmount(int amount)
         {
-            resourceManager.AddAmount(type, amount);
+            resourceManager.ModifyAmount(type, amount);
         }
         public void SubtractAmount(int amount)
         {

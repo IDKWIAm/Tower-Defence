@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefence.Resources
@@ -10,24 +11,21 @@ namespace TowerDefence.Resources
         private ResourceType type;
 
         [SerializeField]
-        private int minAmount, maxAmount;
-
-        [SerializeField]
-        private int amount;
+        private int minAmount, amount, maxAmount;
 
         public ResourceType Type => type;
         public int Amount => amount;
         public int MinAmount => minAmount;
         public int MaxAmount => maxAmount;
 
-        public void AddAmount(int howMuch)
+        public void ModifyAmount(int howMuch)
         {
             amount += howMuch;
-            ClampAmount();
         }
-        public void ClampAmount()
+        public int ClampAmount()
         {
-            amount = Math.Clamp(amount, 0, maxAmount);
+            amount = Math.Clamp(Amount, 0, MaxAmount);
+            return amount;
         }
     }
 }
