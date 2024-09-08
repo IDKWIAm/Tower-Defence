@@ -5,7 +5,6 @@ namespace TowerDefence.Resources
     [Serializable]
     public enum ResourceType
     {
-        Wood,
-        Health
+        Wood
     }
 }

@@ -32,7 +32,8 @@ namespace TowerDefence.Resources
             RemoveDuplicates();
             if (resources.All(res => res.Type != type))
             {
-                throw new Exception($@"Resource type {type.DisplayName()} not defined in Resource Manager ""{gameObject.name}""");
+                throw new Exception(
+                    $@"Resource type {type.DisplayName()} not defined in Resource Manager ""{gameObject.name}""");
             }
             return resources.First(resource => resource.Type == type);
         }
