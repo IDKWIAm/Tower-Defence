@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     {
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.y = Input.GetAxisRaw("Vertical");
+        
     }
 
     private void FixedUpdate()
