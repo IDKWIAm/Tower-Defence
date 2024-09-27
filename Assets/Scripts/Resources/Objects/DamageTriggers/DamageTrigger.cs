@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TowerDefence.Resources.Objects.DamageTriggers
 {
+    /// <summary>
+    /// Damages all <see cref="DamageableResourceObject"/>s stored in list when triggered.
+    /// </summary>
     public abstract class DamageTrigger : MonoBehaviour
     {
         [SerializeField]
