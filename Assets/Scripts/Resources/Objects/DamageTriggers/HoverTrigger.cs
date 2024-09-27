@@ -2,6 +2,9 @@
 
 namespace TowerDefence.Resources.Objects.DamageTriggers
 {
+    /// <summary>
+    /// Triggered on mouse hover every <see cref="triggerPeriod"/> seconds once <see cref="initialDelay"/> seconds have passed.
+    /// </summary>
     public class HoverTrigger : DamageTrigger
     {
         [SerializeField]
