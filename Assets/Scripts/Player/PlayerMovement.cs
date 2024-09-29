@@ -4,9 +4,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] private float rotationSpeed;
-    private Rigidbody2D rb;
-    private Vector3 moveDirection;
-    private Quaternion currentRotation;
+    Rigidbody2D rb;
+    Vector3 moveDirection;
+    Quaternion currentRotation;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
