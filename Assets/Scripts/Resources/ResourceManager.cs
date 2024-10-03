@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefence.Resources
@@ -50,7 +49,7 @@ namespace TowerDefence.Resources
             if (resources.All(res => res.Type != type))
             {
                 throw new Exception(
-                    $@"Resource type {type.DisplayName()} not defined in Resource Manager ""{gameObject.name}""");
+                    $@"Resource type {type.GetName()} not defined in Resource Manager ""{gameObject.name}""");
             }
             return resources.First(resource => resource.Type == type);
         }
@@ -70,7 +69,7 @@ namespace TowerDefence.Resources
         /// </summary>
         private void RemoveDuplicates()
         {
-            resources = resources.DistinctBy(res => res.Type).ToList();
+            resources = resources.Distinct(new Resource.ResourceEqualityComparer()).ToList();
         }
     }
 }

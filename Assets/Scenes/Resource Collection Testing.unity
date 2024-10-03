@@ -403,8 +403,6 @@ GameObject:
   - component: {fileID: 1352877419}
   - component: {fileID: 1352877423}
   - component: {fileID: 1352877422}
-  - component: {fileID: 1352877421}
-  - component: {fileID: 1352877424}
   m_Layer: 0
   m_Name: Wood Source
   m_TagString: Untagged
@@ -5321,21 +5319,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1352877421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352877413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3844ac99cf2241cfb04cf14fdf578fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 1352877422}
-  mouseButton: 0
 --- !u!114 &1352877422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5382,22 +5365,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceManager: {fileID: 155427020}
   type: 0
---- !u!114 &1352877424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352877413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499d9272bb9048159bfae30dfcc24062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 1352877422}
-  initialDelay: 1
-  triggerPeriod: 0.5
 --- !u!1 &1441606786
 GameObject:
   m_ObjectHideFlags: 0
