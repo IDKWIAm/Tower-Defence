@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace TowerDefence.Resources
@@ -48,7 +50,7 @@ namespace TowerDefence.Resources
         {
             amount += howMuch;
         }
-        
+
         /// <summary>
         /// Clamps the current amount of resource between <see cref="minAmount"/> and <see cref="maxAmount"/> and returns the clamped amount.
         /// </summary>
@@ -57,6 +59,32 @@ namespace TowerDefence.Resources
         {
             amount = Math.Clamp(Amount, 0, MaxAmount);
             return amount;
+        }
+
+        /// <summary>
+        /// Equality comparer for <see cref="Enumerable.Distinct{TSource}(System.Collections.Generic.IEnumerable{TSource},System.Collections.Generic.IEqualityComparer{TSource})"/>
+        /// </summary>
+        public class ResourceEqualityComparer : EqualityComparer<Resource>
+        {
+            /// <summary>
+            /// compares resources by type
+            /// </summary>
+            /// <param name="x">first resource</param>
+            /// <param name="y">second resource</param>
+            /// <returns>result of comparison</returns>
+            public override bool Equals(Resource x, Resource y)
+            {
+                return x?.Type == y?.Type;
+            }
+            /// <summary>
+            /// computes the hashcode of resource
+            /// </summary>
+            /// <param name="resource">the resource</param>
+            /// <returns>no fucking clue</returns>
+            public override int GetHashCode(Resource resource)
+            {
+                return resource.Type.GetHashCode();
+            }
         }
     }
 }
