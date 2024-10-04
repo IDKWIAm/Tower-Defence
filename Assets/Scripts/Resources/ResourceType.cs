@@ -8,8 +8,7 @@ namespace TowerDefence.Resources
     [Serializable]
     public enum ResourceType
     {
-        Wood,
-        ZipFile
+        Wood
     }
 
     /// <summary>
@@ -30,6 +29,20 @@ namespace TowerDefence.Resources
                     ResourceType.Wood => "Wood",
                     _ => throw new ArgumentOutOfRangeException(nameof(resourceType),
                         $"Invalid resource type {Enum.GetName(typeof(ResourceType), resourceType)} (did you forget to add a switch case to ResourceTypeExtensions?)")
+                };
+        }
+
+        /// <summary>
+        /// gets the sprite name of resource type
+        /// </summary>
+        /// <param name="resourceType">resource type</param>
+        /// <returns>the sprite name</returns>
+        public static string GetSpriteName(this ResourceType resourceType)
+        {
+            return resourceType switch
+                {
+                    ResourceType.Wood => "Wood",
+                    _ => "Missing"
                 };
         }
     }

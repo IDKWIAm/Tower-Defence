@@ -36,5 +36,14 @@ namespace TowerDefence.Resources
         {
             AddAmount(-amount);
         }
+
+        public void SetResourceManager(ref ResourceManager newManager)
+        {
+            resourceManager = newManager;
+        }
+        public void SetResourceType(ResourceType newType)
+        {
+            type = newType;
+        }
     }
 }
