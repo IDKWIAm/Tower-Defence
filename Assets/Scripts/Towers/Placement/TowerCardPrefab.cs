@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefence.Towers.Placement
+namespace TowerDefence.Towers.Grid
 {
     public class TowerCardPrefab : MonoBehaviour
     {

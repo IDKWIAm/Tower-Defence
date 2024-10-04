@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDefence.Towers.Placement
+namespace TowerDefence.Towers.Grid
 {
     public class TowerCardHolder : MonoBehaviour
     {

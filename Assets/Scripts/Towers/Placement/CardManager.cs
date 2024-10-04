@@ -5,7 +5,7 @@ using TowerDefence.Resources;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TowerDefence.Towers.Placement
+namespace TowerDefence.Towers.Grid
 {
     public class CardManager : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using TowerDefence.Resources;
 using UnityEngine;
 
-namespace TowerDefence.Towers.Placement
+namespace TowerDefence.Towers.Grid
 {
     [CreateAssetMenu(fileName = "TowerCard", menuName = "Towers/New Tower Card")]
     public class TowerCard : ScriptableObject

@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
 
-namespace TowerDefence.Towers.Placement
+namespace TowerDefence.Towers.Grid
 {
-    public class Tower : MonoBehaviour
+    public class Tower : GridObject
     {
-        [SerializeField] private Vector2Int size;
         [SerializeField] private new Renderer renderer;
         [SerializeField] private Color canPlaceColor;
         [SerializeField] private Color cannotPlaceColor;
 
-        public Vector2Int Size
-        {
-            get => size;
-            set => size = value;
-        }
 
         public void ChangeColor(bool canPlaceThere)
         {
