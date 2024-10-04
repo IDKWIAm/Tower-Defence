@@ -407,9 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0884c1e41a5ceca4aaece3e53464dfbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridController: {fileID: 1460059501}
   cardPrefab: {fileID: 3715452154780307248, guid: f943b49e4fd39f0408c336168bb72f88, type: 3}
   cardObjects:
   - {fileID: 11400000, guid: 1c7bd2a5474ed654fb09e6be0d56c540, type: 2}
+  - {fileID: 11400000, guid: 5660c37c0be15d745b5ba08a7921c7a6, type: 2}
   placedCards: []
 --- !u!1 &1460059499
 GameObject:
@@ -455,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7384456cb423dc248a537ecebd96eb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceManager: {fileID: 765885009}
 --- !u!1 &1822207580
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

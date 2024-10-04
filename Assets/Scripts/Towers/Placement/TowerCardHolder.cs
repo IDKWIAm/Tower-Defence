@@ -5,6 +5,9 @@ namespace TowerDefence.Towers.Placement
 {
     public class TowerCardHolder : MonoBehaviour
     {
+        [SerializeField] private GridController gridController;
+        public GridController GridController => gridController;
+
         [SerializeField] private GameObject cardPrefab;
         [SerializeField] private List<TowerCard> cardObjects;
 
@@ -24,6 +27,7 @@ namespace TowerDefence.Towers.Placement
             var card = Instantiate(cardPrefab, transform);
             var cardManager = card.GetComponent<CardManager>();
             cardManager.CardObject = cardObject;
+            cardManager.ParentHolder = this;
             
             placedCards.Add(card);
             _icon = cardObject.Icon;
