@@ -25,37 +25,39 @@ namespace TowerDefence.Towers.Grid
 
         public bool CanPlace(TowerCard card, Vector2Int position)
         {
-            if (InsideGrid(position))
+            // ReSharper disable once ReplaceWithSingleAssignment.True
+            var returnValue = true;
+
+            if (!InsideGrid(position))
             {
-                return false;
+                returnValue = false;
             }
-            if (IsOccupied(position))
+            else if (IsOccupied(position))
             {
-                return false;
+                returnValue = false;
             }
-            if (!card.Cost.All(cost =>
+            else if (!card.Cost.All(cost =>
                     {
                         var resource = resourceManager.GetResource(cost.Type);
                         return resource.Amount - resource.MinAmount >= cost.Amount;
                     })
                 )
             {
-                return false;
+                returnValue = false;
             }
-            return true;
+            return returnValue;
 
         }
         private bool InsideGrid(Vector2Int position)
         {
-            var fitsX = position.x <= _gridRect.xMin || position.x >= _gridRect.xMax;
-            var fitsY = position.y <= _gridRect.yMin || position.y >= _gridRect.yMax;
+            var fitsX = position.x >= _gridRect.xMin && position.x < _gridRect.xMax;
+            var fitsY = position.y >= _gridRect.yMin && position.y < _gridRect.yMax;
             
             return fitsX && fitsY;
         }
         private bool IsOccupied(Vector2Int position)
         {
-            var centerObject = _grid[position.x - _gridRect.xMin, position.y - _gridRect.yMin];
-            return centerObject == null;
+            return _grid[position.x - _gridRect.xMin, position.y - _gridRect.xMin] != null;
         }
     }
 }
