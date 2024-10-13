@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c49430f5b68660479186d345226bac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 1
+  minRange: 0
   maxRange: 4
   rotationSpeed: 2
   firerate: 0.5
