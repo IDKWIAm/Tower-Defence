@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Player" t="Include">
+            <e p="LaserVisualizer.cs" t="Include" />
             <e p="PlayerCurveBullet.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
             <e p="ResourceFinder.cs" t="Include" />

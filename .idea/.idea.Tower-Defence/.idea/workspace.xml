@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -23,6 +24,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawnBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerCurveBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Objects/DamageableResourceObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" />
       </list>
     </option>
@@ -74,6 +77,7 @@
       <workItem from="1727623292351" duration="66000" />
       <workItem from="1727623374270" duration="5499000" />
       <workItem from="1728755497439" duration="2967000" />
+      <workItem from="1729003353416" duration="6869000" />
     </task>
     <servers />
   </component>
