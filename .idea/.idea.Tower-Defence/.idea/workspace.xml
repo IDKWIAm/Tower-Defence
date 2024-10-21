@@ -20,13 +20,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/ResourceManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShooting.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawnBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerCurveBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Objects/DamageableResourceObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
       </list>
     </option>
   </component>
@@ -42,6 +42,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Builds/TowerDefence\Tower Defence.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Work\Unity Projects\Builds\TowerDefence" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -78,6 +86,7 @@
       <workItem from="1727623374270" duration="5499000" />
       <workItem from="1728755497439" duration="2967000" />
       <workItem from="1729003353416" duration="6869000" />
+      <workItem from="1729447173765" duration="8979000" />
     </task>
     <servers />
   </component>

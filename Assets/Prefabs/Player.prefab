@@ -182,8 +182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652ed3ed42f27a84cae785bb815f12c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  maxSpeed: 300
   rotationSpeed: 500
+  acceleration: 500
+  deacceleration: 700
+  currentSpeed: 0
 --- !u!114 &-6392175972490017345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +248,6 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -253,14 +255,41 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.0027923584
+        value: 0
+        inSlope: 2.1098654
+        outSlope: 2.1098654
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 0.10377523
+        value: 0.10351756
+        inSlope: 0.054555617
+        outSlope: 0.054555617
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0.24789025
+      - serializedVersion: 3
+        time: 0.9002803
+        value: 0.10030466
+        inSlope: -0.10294932
+        outSlope: -0.10294932
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.17260033
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -2.23494
+        outSlope: -2.23494
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.27027273
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

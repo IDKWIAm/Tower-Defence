@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float rotationSpeed;
-    Rigidbody2D rb;
-    Vector3 moveDirection;
-    Quaternion currentRotation;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float deacceleration;
+    [SerializeField] private float currentSpeed;
+    private Rigidbody2D _rb;
+    private Vector2 _moveDirection;
+    private Vector2 _currentDirection;
+    private Quaternion _currentRotation;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        currentRotation = transform.rotation;
+        _rb = GetComponent<Rigidbody2D>();
+        _currentRotation = transform.rotation;
     }
     void Update()
     {
@@ -19,21 +23,43 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GetInput()
     {
-        moveDirection.x = Input.GetAxisRaw("Horizontal");
-        moveDirection.y = Input.GetAxisRaw("Vertical");
-        moveDirection = moveDirection.normalized;
+        _moveDirection.x = Input.GetAxisRaw("Horizontal");
+        _moveDirection.y = Input.GetAxisRaw("Vertical");
+        _moveDirection = _moveDirection.normalized;
     }
     private void GetRotation()
     {
-        if (moveDirection != Vector3.zero)
+        if (_moveDirection != Vector2.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
-            currentRotation = Quaternion.RotateTowards(currentRotation, toRotation, rotationSpeed * Time.deltaTime);
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, _moveDirection);
+            _currentRotation = Quaternion.RotateTowards(_currentRotation, toRotation, rotationSpeed * Time.deltaTime);
         }
-        transform.rotation = currentRotation;
+        transform.rotation = _currentRotation;
+    }
+    private void CalculateSpeed()
+    {
+        if (_moveDirection != Vector2.zero)
+        {
+            currentSpeed += acceleration * Time.fixedDeltaTime;
+        }
+        else
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deacceleration * Time.fixedDeltaTime);
+        }
+
+        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+    }
+    private void Movement()
+    {
+        if (_moveDirection != Vector2.zero)
+        {
+            _currentDirection = _moveDirection;
+        }
+        _rb.velocity = _currentDirection * (currentSpeed * Time.fixedDeltaTime);
     }
     private void FixedUpdate()
     {
-        rb.velocity = moveDirection * speed;
+        CalculateSpeed();
+        Movement();
     }
 }
