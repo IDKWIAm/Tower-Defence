@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace TowerDefence.Resources.Objects
@@ -11,30 +12,45 @@ namespace TowerDefence.Resources.Objects
     public class DamageableResourceObject : ResourceObject
     {
         /// <summary>
-        /// The required number of hits before being destroyed.
+        /// The mapping between breaking stages and sprites.
+        /// Also defines the amount of hits needed to break the object.
         /// </summary>
         [SerializeField]
-        private int requiredHits;
-
+        private List<Sprite> hitsToSpriteMapping;
         /// <summary>
         /// Invoked on hit.
         /// </summary>
         [SerializeField]
         private UnityEvent onHit;
 
+        private int _hitsTaken;
+        private SpriteRenderer _spriteRenderer;
+        
         protected override void Awake()
         {
             base.Awake();
             onHit.AddListener(ProcessHit);
             onCollect.AddListener(KillYourself);
+            
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer is not null)
+            {
+                _spriteRenderer.sprite = hitsToSpriteMapping[0];
+            }
         }
 
         private void ProcessHit()
         {
-            requiredHits--;
-            if (requiredHits <= 0)
+            _hitsTaken++;
+            if (_hitsTaken >= hitsToSpriteMapping.Count)
             {
                 CollectResource();
+                return;
+            }
+            
+            if (_spriteRenderer is not null)
+            {
+                _spriteRenderer.sprite = hitsToSpriteMapping[_hitsTaken];
             }
         }
         private void KillYourself()
