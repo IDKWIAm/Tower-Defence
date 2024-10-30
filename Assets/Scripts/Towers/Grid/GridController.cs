@@ -1,12 +1,14 @@
 using System.Linq;
 using TowerDefence.Resources;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TowerDefence.Towers.Grid
 {
     public class GridController : MonoBehaviour
     {
         [SerializeField] private ResourceManager resourceManager;
+        [SerializeField] private UnityEvent onUpdate;
         private Vector2Int _gridSize = new(10, 10);
         private RectInt _gridRect;
         private GridObject[,] _grid;
@@ -21,6 +23,7 @@ namespace TowerDefence.Towers.Grid
         public void AddTowerCard(Tower tower, Vector2Int position)
         {
             _grid[position.x - _gridRect.xMin, position.y - _gridRect.yMin] = tower;
+            onUpdate.Invoke();
         }
 
         public bool CanPlace(TowerCard card, Vector2Int position)
