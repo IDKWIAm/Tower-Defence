@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e574e803700faf44991de3d58387e2a9, type: 3}
   m_Name: AnotherTower
   m_EditorClassIdentifier: 
-  icon: {fileID: 291534048, guid: 7ae649c6a76f6c549a43fdf745e8cb3e, type: 3}
+  icon: {fileID: 21300000, guid: 6499a425d899cf04db8f153ef8f52d29, type: 3}
   prefab: {fileID: 8933940778325103701, guid: dc526890fef704b41b9a96c2819c6ac9, type: 3}
   cost:
   - type: 0
