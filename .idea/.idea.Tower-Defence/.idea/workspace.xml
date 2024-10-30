@@ -27,6 +27,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Packages/manifest.json" />
       </list>
     </option>
   </component>
@@ -87,6 +88,7 @@
       <workItem from="1728755497439" duration="2967000" />
       <workItem from="1729003353416" duration="6869000" />
       <workItem from="1729447173765" duration="10183000" />
+      <workItem from="1730306271850" duration="2427000" />
     </task>
     <servers />
   </component>
