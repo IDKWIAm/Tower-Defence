@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TowerAI : MonoBehaviour
 {
-    [SerializeField] private float minRange;
     [SerializeField] private float maxRange;
     [SerializeField] private float rotationSpeed;
 
@@ -27,7 +26,7 @@ public class TowerAI : MonoBehaviour
 
         var distance = Vector2.Distance(transform.position, target.position);
 
-        if (distance <= maxRange && distance >= minRange)
+        if (distance <= maxRange)
         {
             Vector3 targetDirection = (target.position - transform.position).normalized;
             var targetRotation = Quaternion.LookRotation(Vector3.forward, targetDirection);
