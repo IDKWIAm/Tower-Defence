@@ -7,50 +7,49 @@ public class BallisticFire : MonoBehaviour
     [SerializeField] private float firerate;
     [SerializeField] private GameObject projectilePrefab;
 
-    [SerializeField] private Transform target;
+    [SerializeField] private LayerMask enemyLayer;
 
-    private float startingPower;
-    private float grav;
+    private GameObject target;
+
     private float fireTimer;
-
-    private void Start()
-    {
-        grav = 9.8f;
-        startingPower = maxRange + 1;
-    }
 
     void Update()
     {
-        var distance = Vector2.Distance(transform.position, target.position);
+        target = FindNearestEnemy();
+        if (target == null) return;
+        
+        var distance = Vector2.Distance(transform.position, target.transform.position);
 
         if (distance <= maxRange && fireTimer <= 0)
         {
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectile.GetComponent<ballisticBullet>().InitTargetPoint(target.position.y);
-            LaunchProjectile(projectile);
+            LaunchProjectile();
             fireTimer = firerate;
         }
         fireTimer -= Time.deltaTime;
     }
-
-    void LaunchProjectile(GameObject projectile)
+    
+    void LaunchProjectile()
     {
-        float yDir = projectile.transform.position.y - target.position.y;
-        float xDir = target.position.x - transform.position.x;
-        
-        Rigidbody2D projectileBody = projectile.GetComponent<Rigidbody2D>();
-        projectileBody.velocity = CalculateVelocity(xDir, yDir);
-
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        projectile.GetComponent<ballisticBullet>().InitTarget(target);
     }
 
-    Vector2 CalculateVelocity(float xDir, float yDir)
+    GameObject FindNearestEnemy()
     {
-        Vector2 displacementX = new Vector2(xDir, 0);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, maxRange, enemyLayer);
 
-        Vector2 velocityY = Vector2.up * Mathf.Sqrt(2 * grav * (startingPower - yDir));
-        Vector2 velocityX = displacementX / (Mathf.Sqrt(2 * (startingPower - yDir) / grav) + Mathf.Sqrt(2 * startingPower / grav));
+        GameObject nearestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+        foreach (Collider2D collider in colliders)
+        {
+            float distance = Vector2.Distance(transform.position, collider.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                nearestEnemy = collider.gameObject;
+            }
+        }
 
-        Vector2 velocity = velocityX + velocityY;
-        return velocity;
+        return nearestEnemy;
     }
 }

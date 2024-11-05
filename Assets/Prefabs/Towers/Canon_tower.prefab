@@ -175,7 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7620f95362f37584182f9a19b5bbc19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 4
+  maxRange: 5
   firerate: 1
   projectilePrefab: {fileID: 647702886932153345, guid: 56bc70e7a38573347bf353bf5a92bb6a, type: 3}
-  target: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64

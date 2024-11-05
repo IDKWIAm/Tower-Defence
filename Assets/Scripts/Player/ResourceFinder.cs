@@ -14,7 +14,7 @@ public class ResourceFinder : MonoBehaviour
     private DamageableResourceObject _currentResource;
     private LaserVisualizer _laserVisualizer;
     private Coroutine _attackCoroutine;
-    private float _lastAttackTime;
+    
     void Awake()
     {
         _laserVisualizer = GetComponentInChildren<LaserVisualizer>();
@@ -104,7 +104,6 @@ public class ResourceFinder : MonoBehaviour
         if (_currentResource != null)
         {
             _currentResource.Hit();
-            _lastAttackTime = Time.time;
         }
     }
 }

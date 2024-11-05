@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float deacceleration;
-    [SerializeField] private float currentSpeed;
+    
+    private float currentSpeed;
     private Rigidbody2D _rb;
     private Vector2 _moveDirection;
     private Vector2 _currentDirection;

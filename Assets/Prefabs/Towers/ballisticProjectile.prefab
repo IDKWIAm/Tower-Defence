@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7852a9955a6ee1544804781fcf2dbeeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSpeed: 3
+  projectileSpeed: 1
   rb: {fileID: 3733152662196374429}
   particles: {fileID: -8624089214762067400}
 --- !u!199 &-7870801323072311960
