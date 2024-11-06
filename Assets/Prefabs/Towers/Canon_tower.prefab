@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3469842669275956016}
   - component: {fileID: 955851669244501896}
   - component: {fileID: 273443772547075725}
+  - component: {fileID: 3084188774719503684}
+  - component: {fileID: 7664342082228200730}
+  - component: {fileID: 5719965316404321731}
   m_Layer: 0
   m_Name: Canon_tower
   m_TagString: Untagged
@@ -74,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1809
   m_Sprite: {fileID: 21300000, guid: 4a53869cc3660fa47b0191795e13757e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -131,6 +134,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &3084188774719503684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361148117146395986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7620f95362f37584182f9a19b5bbc19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRange: 5
+  firerate: 1.5
+  projectilePrefab: {fileID: 647702886932153345, guid: 56bc70e7a38573347bf353bf5a92bb6a, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &7664342082228200730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361148117146395986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: f2652fae
+--- !u!114 &5719965316404321731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361148117146395986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf288085e644dc2a2b0eade015a2205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 1, y: 1}
+  renderer: {fileID: 955851669244501896}
+  canPlaceColor: {r: 0, g: 1, b: 0, a: 0}
+  cannotPlaceColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &7618334701104741192
 GameObject:
   m_ObjectHideFlags: 0

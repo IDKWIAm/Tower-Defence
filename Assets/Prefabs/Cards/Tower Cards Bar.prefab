@@ -78,8 +78,7 @@ MonoBehaviour:
   gridController: {fileID: 0}
   cardPrefab: {fileID: 3715452154780307248, guid: f943b49e4fd39f0408c336168bb72f88, type: 3}
   cardObjects:
-  - {fileID: 11400000, guid: 1c7bd2a5474ed654fb09e6be0d56c540, type: 2}
-  - {fileID: 11400000, guid: 5660c37c0be15d745b5ba08a7921c7a6, type: 2}
+  - {fileID: 11400000, guid: b8e22eb27814ee648a895ac8271389aa, type: 2}
   placedCards: []
 --- !u!1 &6427106244204978446
 GameObject:
