@@ -1,3 +1,4 @@
+using TowerDefence.Enemies;
 using UnityEngine;
 
 public class ballisticBullet : MonoBehaviour
@@ -27,6 +28,11 @@ public class ballisticBullet : MonoBehaviour
 
     private void Update()
     {
+        if (!target)
+        {
+            return;
+        }
+        
         targetX = target.transform.position.x;
         targetY = target.transform.position.y;
         if (fireLerp < 1)
@@ -64,5 +70,12 @@ public class ballisticBullet : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
+
+        var enemyHealth = target.GetComponent<EnemyHealth>();
+        if (enemyHealth is not null)
+        {
+            enemyHealth.Damage(1);
+            print("damaged enemy");
+        }
     }
 }
