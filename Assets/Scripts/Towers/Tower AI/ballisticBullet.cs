@@ -5,6 +5,8 @@ public class ballisticBullet : MonoBehaviour
 {
     [SerializeField] private float startSpeed;
     [SerializeField] private float projectileSpeed;
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private int explosionDamage;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private ParticleSystem particles;
 
@@ -23,18 +25,20 @@ public class ballisticBullet : MonoBehaviour
     {
         startingX = transform.position.x;
         startingY = transform.position.y;
+        targetX = target.transform.position.x;
+        targetY = target.transform.position.y;
         fireLerp = 0;
     }
 
     private void Update()
     {
-        if (!target)
+        if (target)
         {
-            return;
+            targetX = target.transform.position.x;
+            targetY = target.transform.position.y;
         }
-        
-        targetX = target.transform.position.x;
-        targetY = target.transform.position.y;
+
+
         if (fireLerp < 1)
         {
             Vector3 newProjectilePos = CalculateTrajectory(new Vector3(startingX, startingY, 0), new Vector3(targetX, targetY, 0), fireLerp);
@@ -45,8 +49,8 @@ public class ballisticBullet : MonoBehaviour
 
         if (fireLerp >= 1 && !exploded)
         {
-            Explode();
             exploded = true;
+            Explode();
         }
     }
 
@@ -71,11 +75,17 @@ public class ballisticBullet : MonoBehaviour
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0, 0);
 
-        var enemyHealth = target.GetComponent<EnemyHealth>();
-        if (enemyHealth is not null)
+        if (!target) return;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (Collider2D collider in colliders)
         {
-            enemyHealth.Damage(1);
-            print("damaged enemy");
+            var enemyHealth = collider.gameObject.GetComponent<EnemyHealth>();
+            if (enemyHealth is not null)
+            {
+                enemyHealth.Damage(explosionDamage);
+            }
         }
     }
 }

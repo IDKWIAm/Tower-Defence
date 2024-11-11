@@ -149,6 +149,7 @@ MonoBehaviour:
   maxRange: 5
   firerate: 1.5
   projectilePrefab: {fileID: 647702886932153345, guid: 56bc70e7a38573347bf353bf5a92bb6a, type: 3}
+  bulletSource: {fileID: 1459568999927175002}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -193,7 +194,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1459568999927175002}
-  - component: {fileID: 1356361182338285862}
   m_Layer: 0
   m_Name: bulletSource
   m_TagString: Untagged
@@ -216,21 +216,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3469842669275956016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356361182338285862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7618334701104741192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7620f95362f37584182f9a19b5bbc19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRange: 5
-  firerate: 1
-  projectilePrefab: {fileID: 647702886932153345, guid: 56bc70e7a38573347bf353bf5a92bb6a, type: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64

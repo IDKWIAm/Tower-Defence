@@ -1,46 +1,37 @@
 using UnityEngine;
 
-public class BallisticFire : MonoBehaviour
+public class TargetedFire : MonoBehaviour
 {
     [SerializeField] private float maxRange;
 
     [SerializeField] private float firerate;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform bulletSource;
+
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform bulletSourse;
 
     [SerializeField] private LayerMask enemyLayer;
 
-    private GameObject target;
-
     private float fireTimer;
 
-    private void Start()
-    {
-        if (bulletSource == null)
-        {
-            bulletSource = transform;
-        }
-    }
+    private Transform target;
 
-    void Update()
+    private void Update()
     {
-        target = FindNearestEnemy();
-        if (target == null) return;
-        
-        var distance = Vector2.Distance(transform.position, target.transform.position);
+        target = FindNearestEnemy()?.transform;
 
-        if (distance <= maxRange && fireTimer <= 0)
+        if (target && fireTimer <= 0)
         {
-            LaunchProjectile();
+            Fire();
             fireTimer = firerate;
         }
+
         fireTimer -= Time.deltaTime;
     }
-    
-    void LaunchProjectile()
+
+    private void Fire()
     {
-        GameObject projectile = Instantiate(projectilePrefab, bulletSource.position, Quaternion.identity);
-        projectile.GetComponent<ballisticBullet>().InitTarget(target);
+        var bullet = Instantiate(bulletPrefab, bulletSourse.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().InitTarget(target);
     }
 
     GameObject FindNearestEnemy()
@@ -61,4 +52,5 @@ public class BallisticFire : MonoBehaviour
 
         return nearestEnemy;
     }
+
 }
