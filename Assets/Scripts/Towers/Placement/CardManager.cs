@@ -50,8 +50,10 @@ namespace TowerDefence.Towers.Grid
                     });
                 var towerPosition = _draggingTower.transform.position;
                 ParentHolder.GridController.AddTowerCard(_tower,
-                    new Vector2Int(Mathf.FloorToInt(towerPosition.x), Mathf.FloorToInt(towerPosition.y)));
+                    new Vector2Int(Mathf.FloorToInt(towerPosition.x / 2) * 2, Mathf.FloorToInt(towerPosition.y / 2) * 2));
                 _tower.ResetColor();
+                
+                _draggingTower.transform.position = new Vector3(towerPosition.x, towerPosition.y, 0);
             }
             else
             {
@@ -64,12 +66,12 @@ namespace TowerDefence.Towers.Grid
             _tower = _draggingTower.GetComponent<Tower>();
 
             var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector2Int position = new(Mathf.RoundToInt(mousePosition.x), Mathf.RoundToInt(mousePosition.y));
+            Vector2Int position = new(Mathf.RoundToInt(mousePosition.x / 2) * 2, Mathf.RoundToInt(mousePosition.y / 2) * 2);
             _canPlace = ParentHolder.GridController.CanPlace(CardObject, position);
             _tower.ChangeColor(_canPlace);
 
             _draggingTower.transform.position =
-                new Vector3(position.x, position.y, _draggingTower.transform.position.z);
+                new Vector3(position.x, position.y, -1);
         }
     }
 }

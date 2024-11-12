@@ -46,7 +46,6 @@ namespace TowerDefence.Enemies
             {
                 houseHealth.Damage(5);
                 _timer = 0;
-                print("damaged tower");
             }
 
             _timer += Time.deltaTime;
