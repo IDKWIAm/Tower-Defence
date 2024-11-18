@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2604248381710945780}
   - component: {fileID: 2251663964094994875}
   - component: {fileID: 612484029618634220}
+  - component: {fileID: 2431360803143685419}
   m_Layer: 3
   m_Name: Iron
   m_TagString: Untagged
@@ -161,3 +162,16 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2431360803143685419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779804471174893910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 0

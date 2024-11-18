@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2736128477841697224}
   - component: {fileID: 1676554034839173295}
   - component: {fileID: 7907420588939408055}
+  - component: {fileID: -7136873743789766330}
   m_Layer: 3
   m_Name: Rouin 3
   m_TagString: Untagged
@@ -160,3 +161,16 @@ CircleCollider2D:
   m_Offset: {x: -0.06, y: 0.09}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7136873743789766330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476542687707614923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 0

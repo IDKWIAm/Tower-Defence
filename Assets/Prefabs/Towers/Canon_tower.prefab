@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3084188774719503684}
   - component: {fileID: 7664342082228200730}
   - component: {fileID: 5719965316404321731}
+  - component: {fileID: 4311496177322987784}
   m_Layer: 0
   m_Name: Canon_tower
   m_TagString: Untagged
@@ -185,6 +186,19 @@ MonoBehaviour:
   renderer: {fileID: 955851669244501896}
   canPlaceColor: {r: 0.3726415, g: 1, b: 0.3726415, a: 0.36078432}
   cannotPlaceColor: {r: 1, g: 0, b: 0, a: 0.49019608}
+--- !u!114 &4311496177322987784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361148117146395986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 1
 --- !u!1 &7618334701104741192
 GameObject:
   m_ObjectHideFlags: 0

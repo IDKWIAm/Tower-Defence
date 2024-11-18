@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051a0015f3df4cbabec19bcaa9e0b382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCount: 5
   house: {fileID: 2013638446}
   enemyPrefab: {fileID: 3705963813496457784, guid: 34b780509791d8446bcac9f01f986dfe, type: 3}
 --- !u!114 &1557505113

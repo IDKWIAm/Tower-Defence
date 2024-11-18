@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7629071353704246872}
   - component: {fileID: 1262725932422278170}
   - component: {fileID: 9215814915639343929}
+  - component: {fileID: 8075927180492456312}
   m_Layer: 0
   m_Name: Bunker_tower
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRange: 5
   firerate: 0.33
-  bulletPrefab: {fileID: 2776361409408977290, guid: 7624256fe145742479c08c04b960f5be, type: 3}
+  bulletPrefab: {fileID: 2776361409408977290, guid: 99185c25742e0ed4aa996df07f47896d, type: 3}
   bulletSourse: {fileID: 6511280195950966795}
   enemyLayer:
     serializedVersion: 2
@@ -174,3 +175,16 @@ MonoBehaviour:
   renderer: {fileID: 5645577105178552140}
   canPlaceColor: {r: 0.37254903, g: 1, b: 0.37254903, a: 0.36078432}
   cannotPlaceColor: {r: 1, g: 0, b: 0, a: 0.49019608}
+--- !u!114 &8075927180492456312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351150399235502875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 1
