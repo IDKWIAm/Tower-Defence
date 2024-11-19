@@ -16,16 +16,26 @@
           </e>
           <e p="Enemies" t="Include">
             <e p="EnemyAI.cs" t="Include" />
+            <e p="EnemyHealth.cs" t="Include" />
+            <e p="EnemySpawner.cs" t="Include" />
             <e p="NavMeshUpdater.cs" t="Include" />
           </e>
           <e p="Grid" t="Include">
             <e p="DualGridSystem.cs" t="Include" />
           </e>
+          <e p="Health" t="Include">
+            <e p="BaseHealth.cs" t="Include" />
+          </e>
+          <e p="House" t="Include">
+            <e p="HouseHealth.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
             <e p="LaserVisualizer.cs" t="Include" />
             <e p="PlayerCurveBullet.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="ResourceAttacker.cs" t="Include" />
             <e p="ResourceFinder.cs" t="Include" />
+            <e p="ResourceRenderer.cs" t="Include" />
           </e>
           <e p="Resources" t="Include">
             <e p="Modifiers" t="Include">
@@ -63,8 +73,13 @@
               <e p="ballisticBullet.cs" t="Include" />
               <e p="BallisticFire.cs" t="Include" />
               <e p="Bullet.cs" t="Include" />
+              <e p="TargetedFire.cs" t="Include" />
               <e p="TowerAI.cs" t="Include" />
             </e>
+          </e>
+          <e p="Util" t="Include">
+            <e p="SceneReloader.cs" t="Include" />
+            <e p="YSort.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

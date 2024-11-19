@@ -39,15 +39,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void CalculateSpeed()
     {
-        if (_moveDirection != Vector2.zero)
-        {
-            currentSpeed += acceleration * Time.fixedDeltaTime;
-        }
-        else
-        {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deacceleration * Time.fixedDeltaTime);
-        }
-
+        if (_moveDirection != Vector2.zero) currentSpeed += acceleration * Time.fixedDeltaTime;
+        else currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deacceleration * Time.fixedDeltaTime);
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
     }
     private void Movement()

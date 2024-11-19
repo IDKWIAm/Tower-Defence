@@ -1,109 +1,54 @@
-using UnityEngine;
-using System.Collections;
 using TowerDefence.Resources.Objects;
+using UnityEngine;
 
-public class ResourceFinder : MonoBehaviour
+namespace Player
 {
-    public float attackCooldown = 1f;
-    public float searchRadius = 5f;
-    [SerializeField] LayerMask resourceLayer;
-
-    private Material _currentResourceMaterial;
-    private const string thicknessProperty = "_Thickness";
-
-    private DamageableResourceObject _currentResource;
-    private LaserVisualizer _laserVisualizer;
-    private Coroutine _attackCoroutine;
-    
-    void Awake()
+    public class ResourceFinder : MonoBehaviour
     {
-        _laserVisualizer = GetComponentInChildren<LaserVisualizer>();
-    }
-    void Update()
-    {
-        GameObject nearestResource = FindNearestResource();
-        if (nearestResource != null)
+        public float searchRadius = 5f;
+        public DamageableResourceObject _currentResource;
+        [SerializeField] LayerMask resourceLayer;
+        private LaserVisualizer _laserVisualizer;
+        void Awake()
         {
-            if (_currentResourceMaterial != nearestResource.GetComponent<Renderer>().material)
-            {
-                if (_currentResourceMaterial != null)
-                {
-                    _currentResourceMaterial.SetFloat(thicknessProperty, 0f);
-                }
-                _currentResourceMaterial = nearestResource.GetComponent<Renderer>().material;
-                _currentResourceMaterial.SetFloat(thicknessProperty, 0.0156f);
-            }
-            _currentResource = nearestResource.GetComponent<DamageableResourceObject>();
-            if (_laserVisualizer != null)
-            {
-                _laserVisualizer.ShowLaser(transform.position, nearestResource.transform.position);
-            }
+            _laserVisualizer = GetComponentInChildren<LaserVisualizer>();
+        }
+        void Update()
+        {
+            _currentResource = GetNearestResource();
             if (Input.GetButton("Fire1"))
             {
-                if (_attackCoroutine == null)
+                if (_currentResource != null)
                 {
-                    _attackCoroutine = StartCoroutine(AttackCoroutine());
+                    ResourceAttacker attacker = GetComponent<ResourceAttacker>();
+                    attacker?.Attack(_currentResource);
+                    _laserVisualizer.ShowLaser(transform.position, _currentResource.transform.position);
                 }
+                else _laserVisualizer.HideLaser();
             }
-            else
-            {
-                if (_attackCoroutine != null)
-                {
-                    StopCoroutine(_attackCoroutine);
-                    _attackCoroutine = null;
-                }
-                _laserVisualizer.HideLaser();
-            }
-        }
-        else
-        {
-            if (_currentResourceMaterial != null)
-            {
-                _currentResourceMaterial.SetFloat(thicknessProperty, 0f);
-                _currentResourceMaterial = null;
-            }
-            _currentResource = null;
-            if (_laserVisualizer != null)
+            else if (Input.GetButtonUp("Fire1"))
             {
                 _laserVisualizer.HideLaser();
             }
         }
-    }
 
-    GameObject FindNearestResource()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, searchRadius, resourceLayer);
-
-        GameObject nearestResource = null;
-        float closestDistance = Mathf.Infinity;
-        foreach (Collider2D collider in colliders)
+        DamageableResourceObject GetNearestResource()
         {
-            float distance = Vector2.Distance(transform.position, collider.transform.position);
-            if (distance < closestDistance)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, searchRadius, resourceLayer);
+            DamageableResourceObject nearestResource = null;
+            float closestDistance = Mathf.Infinity;
+
+            foreach (Collider2D collider in colliders)
             {
-                closestDistance = distance;
-                nearestResource = collider.gameObject;
+                float distance = Vector2.Distance(transform.position, collider.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    nearestResource = collider.GetComponent<DamageableResourceObject>();
+                }
             }
-        }
-
-        return nearestResource;
-    }
-    private IEnumerator AttackCoroutine()
-    {
-        while (true)
-        {
-            if (_currentResource != null)
-            {
-                Attack();
-            }
-            yield return new WaitForSeconds(attackCooldown);
-        }
-    }
-    void Attack()
-    {
-        if (_currentResource != null)
-        {
-            _currentResource.Hit();
+            return nearestResource;
         }
     }
 }
+

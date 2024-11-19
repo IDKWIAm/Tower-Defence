@@ -21,9 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f4df0fa9-8486-4738-b048-d58eef4947cf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower-Defence/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Outline Shader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Outline Shader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tile Drawing testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tile Drawing testing.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerControls.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerControls.inputactions.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +42,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldLight.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/TimeWorldWatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/ResourceRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/ResourceAttacker.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -52,15 +56,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawnBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerCurveBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Objects/DamageableResourceObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/LaserVisualizer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldTimeConstants.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldLight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/WorldTimeDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Day&amp;Night/TimeWorldWatcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceRenderer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceAttacker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/ResourceFinder.cs" />
       </list>
     </option>
   </component>
@@ -123,6 +129,8 @@
       <workItem from="1729447173765" duration="10183000" />
       <workItem from="1730306271850" duration="2427000" />
       <workItem from="1730841727585" duration="4935000" />
+      <workItem from="1731753420717" duration="2020000" />
+      <workItem from="1732025283567" duration="5320000" />
     </task>
     <servers />
   </component>
@@ -138,6 +146,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
