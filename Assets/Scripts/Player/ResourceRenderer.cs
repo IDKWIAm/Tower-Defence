@@ -15,23 +15,15 @@ namespace Player
                 var renderer = resource.GetComponent<Renderer>();
                 if (_currentResourceMaterial != renderer.material)
                 {
-                    if (_currentResourceMaterial != null)
-                    {
-                        _currentResourceMaterial.SetFloat(thicknessProperty, 0f);
-                    }
                     _currentResourceMaterial = renderer.material;
                     _currentResourceMaterial.SetFloat(thicknessProperty, 0.0156f);
                 }
             }
         }
-
         public void ClearHighlight()
         {
-            if (_currentResourceMaterial != null)
-            {
-                _currentResourceMaterial.SetFloat(thicknessProperty, 0f);
-                _currentResourceMaterial = null;
-            }
+            _currentResourceMaterial?.SetFloat(thicknessProperty, 0f);
+            _currentResourceMaterial = null;
         }
     }
 }
