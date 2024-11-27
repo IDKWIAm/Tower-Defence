@@ -9,7 +9,7 @@ namespace TowerDefence.Towers.Grid
     {
         [SerializeField] private ResourceManager resourceManager;
         [SerializeField] private UnityEvent onUpdate;
-        private Vector2Int _gridSize = new(20, 20);
+        [SerializeField] private Vector2Int _gridSize;
         private RectInt _gridRect;
         private GridObject[,] _grid;
 
