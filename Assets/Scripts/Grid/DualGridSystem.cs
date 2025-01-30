@@ -2,31 +2,32 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static TileType;
+using static TowerDefence.Grid.TileType;
 
-public class DualGridSystem : MonoBehaviour
+namespace TowerDefence.Grid
 {
-    protected static Vector3Int[] NEIGHBOURS = new Vector3Int[] {
+    public class DualGridSystem : MonoBehaviour
+    {
+        protected static Vector3Int[] NEIGHBOURS = new Vector3Int[] {
         new Vector3Int(0, 0, 0),
         new Vector3Int(1, 0, 0),
         new Vector3Int(0, 1, 0),
         new Vector3Int(1, 1, 0)
     };
 
-    protected static Dictionary<Tuple<TileType, TileType, TileType, TileType>, Tile> neighbourTupleToTile;
+        protected static Dictionary<Tuple<TileType, TileType, TileType, TileType>, Tile> neighbourTupleToTile;
 
-    public Tilemap placeholderTilemap;
-    public Tilemap displayTilemap;
+        public Tilemap placeholderTilemap;
+        public Tilemap displayTilemap;
 
-    public Tile grassPlaceholderTile;
-    public Tile sandPlaceholderTile;
+        public Tile grassPlaceholderTile;
+        public Tile sandPlaceholderTile;
 
-    public Tile[] tiles;
+        public Tile[] tiles;
 
-    void Start()
-    {
-        // This dictionary stores the "rules", each 4-neighbour configuration corresponds to a tile
-        neighbourTupleToTile = new() {
+        void Start()
+        {
+            neighbourTupleToTile = new() {
             {new (Grass, Grass, Grass, Grass), tiles[6]},
             {new (Sand, Sand, Sand, Grass), tiles[13]}, // OUTER_BOTTOM_RIGHT
             {new (Sand, Sand, Grass, Sand), tiles[0]}, // OUTER_BOTTOM_LEFT
@@ -44,61 +45,61 @@ public class DualGridSystem : MonoBehaviour
             {new (Grass, Sand, Sand, Grass), tiles[4]}, // DUAL_DOWN_RIGHT
             {new (Sand, Sand, Sand, Sand), tiles[12]},
         };
-        RefreshDisplayTilemap();
-    }
-
-    public void SetCell(Vector3Int coords, Tile tile)
-    {
-        placeholderTilemap.SetTile(coords, tile);
-        setDisplayTile(coords);
-    }
-
-    private TileType getPlaceholderTileTypeAt(Vector3Int coords)
-    {
-        if (placeholderTilemap.GetTile(coords) == grassPlaceholderTile)
-            return Grass;
-        else
-            return Sand;
-    }
-
-    protected Tile calculateDisplayTile(Vector3Int coords)
-    {
-        // 4 neighbours
-        TileType topRight = getPlaceholderTileTypeAt(coords - NEIGHBOURS[0]);
-        TileType topLeft = getPlaceholderTileTypeAt(coords - NEIGHBOURS[1]);
-        TileType botRight = getPlaceholderTileTypeAt(coords - NEIGHBOURS[2]);
-        TileType botLeft = getPlaceholderTileTypeAt(coords - NEIGHBOURS[3]);
-
-        Tuple<TileType, TileType, TileType, TileType> neighbourTuple = new(topLeft, topRight, botLeft, botRight);
-
-        return neighbourTupleToTile[neighbourTuple];
-    }
-
-    protected void setDisplayTile(Vector3Int pos)
-    {
-        for (int i = 0; i < NEIGHBOURS.Length; i++)
-        {
-            Vector3Int newPos = pos + NEIGHBOURS[i];
-            displayTilemap.SetTile(newPos, calculateDisplayTile(newPos));
+            RefreshDisplayTilemap();
         }
-    }
 
-    // The tiles on the display tilemap will recalculate themselves based on the placeholder tilemap
-    public void RefreshDisplayTilemap()
-    {
-        for (int i = -50; i < 50; i++)
+        public void SetCell(Vector3Int coords, Tile tile)
         {
-            for (int j = -50; j < 50; j++)
+            placeholderTilemap.SetTile(coords, tile);
+            setDisplayTile(coords);
+        }
+
+        private TileType getPlaceholderTileTypeAt(Vector3Int coords)
+        {
+            if (placeholderTilemap.GetTile(coords) == grassPlaceholderTile)
+                return Grass;
+            else
+                return Sand;
+        }
+
+        protected Tile calculateDisplayTile(Vector3Int coords)
+        {
+            // 4 neighbours
+            TileType topRight = getPlaceholderTileTypeAt(coords - NEIGHBOURS[0]);
+            TileType topLeft = getPlaceholderTileTypeAt(coords - NEIGHBOURS[1]);
+            TileType botRight = getPlaceholderTileTypeAt(coords - NEIGHBOURS[2]);
+            TileType botLeft = getPlaceholderTileTypeAt(coords - NEIGHBOURS[3]);
+
+            Tuple<TileType, TileType, TileType, TileType> neighbourTuple = new(topLeft, topRight, botLeft, botRight);
+
+            return neighbourTupleToTile[neighbourTuple];
+        }
+
+        protected void setDisplayTile(Vector3Int pos)
+        {
+            for (int i = 0; i < NEIGHBOURS.Length; i++)
             {
-                setDisplayTile(new Vector3Int(i, j, 0));
+                Vector3Int newPos = pos + NEIGHBOURS[i];
+                displayTilemap.SetTile(newPos, calculateDisplayTile(newPos));
+            }
+        }
+
+        public void RefreshDisplayTilemap()
+        {
+            for (int i = -50; i < 50; i++)
+            {
+                for (int j = -50; j < 50; j++)
+                {
+                    setDisplayTile(new Vector3Int(i, j, 0));
+                }
             }
         }
     }
-}
 
-public enum TileType
-{
-    None,
-    Grass,
-    Sand
+    public enum TileType
+    {
+        None,
+        Grass,
+        Sand
+    }
 }

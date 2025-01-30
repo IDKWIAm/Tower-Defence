@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Util
+namespace TowerDefence.Util
 {
     public class SceneReloader : MonoBehaviour
     {

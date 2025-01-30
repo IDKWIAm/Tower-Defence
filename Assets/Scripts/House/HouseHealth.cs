@@ -1,6 +1,6 @@
 ﻿using TowerDefence.Health;
 using UnityEngine;
-using Util;
+using TowerDefence.Util;
 
 namespace TowerDefence.House
 {

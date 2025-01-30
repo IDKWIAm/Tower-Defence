@@ -1,64 +1,45 @@
 using UnityEngine;
+using TowerDefence.Towers.Projectiles;
 
-public class BallisticFire : MonoBehaviour
+namespace TowerDefence.Towers.TowerAI
 {
-    [SerializeField] private float maxRange;
-
-    [SerializeField] private float firerate;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform bulletSource;
-
-    [SerializeField] private LayerMask enemyLayer;
-
-    private GameObject target;
-
-    private float fireTimer;
-
-    private void Start()
+    public class BallisticFire : Tower
     {
-        if (bulletSource == null)
+        [SerializeField] private float firerate;
+        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private Transform bulletSource;
+
+        private GameObject _target;
+
+        private float _fireTimer;
+
+        private void Start()
         {
-            bulletSource = transform;
-        }
-    }
-
-    void Update()
-    {
-        target = FindNearestEnemy();
-        if (target == null) return;
-        
-        var distance = Vector2.Distance(transform.position, target.transform.position);
-
-        if (distance <= maxRange && fireTimer <= 0)
-        {
-            LaunchProjectile();
-            fireTimer = firerate;
-        }
-        fireTimer -= Time.deltaTime;
-    }
-    
-    void LaunchProjectile()
-    {
-        GameObject projectile = Instantiate(projectilePrefab, bulletSource.position, Quaternion.identity);
-        projectile.GetComponent<ballisticBullet>().InitTarget(target);
-    }
-
-    GameObject FindNearestEnemy()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, maxRange, enemyLayer);
-
-        GameObject nearestEnemy = null;
-        float closestDistance = Mathf.Infinity;
-        foreach (Collider2D collider in colliders)
-        {
-            float distance = Vector2.Distance(transform.position, collider.transform.position);
-            if (distance < closestDistance)
+            if (bulletSource == null)
             {
-                closestDistance = distance;
-                nearestEnemy = collider.gameObject;
+                bulletSource = transform;
             }
         }
 
-        return nearestEnemy;
+        void Update()
+        {
+            _target = FindNearestEnemy();
+            if (_target == null) return;
+
+            var distance = Vector2.Distance(transform.position, _target.transform.position);
+
+            if (_target != null && _fireTimer <= 0)
+            {
+                LaunchProjectile();
+                _fireTimer = firerate;
+            }
+            _fireTimer -= Time.deltaTime;
+        }
+
+        void LaunchProjectile()
+        {
+            GameObject projectile = Instantiate(projectilePrefab, bulletSource.position, Quaternion.identity);
+            projectile.GetComponent<ballisticBullet>().InitTarget(_target);
+        }
     }
 }

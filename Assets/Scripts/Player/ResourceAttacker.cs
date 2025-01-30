@@ -1,7 +1,7 @@
 using TowerDefence.Resources.Objects;
 using UnityEngine;
 
-namespace Player
+namespace TowerDefence.Player
 {
     public class ResourceAttacker : MonoBehaviour
     {

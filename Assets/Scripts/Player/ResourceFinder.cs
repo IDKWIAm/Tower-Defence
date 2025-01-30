@@ -2,16 +2,16 @@ using TowerDefence.Resources.Objects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace TowerDefence.Player
 {
     public class ResourceFinder : MonoBehaviour
     {
         public float searchRadius = 5f;
         public DamageableResourceObject _currentResource;
-        [SerializeField] LayerMask resourceLayer;
+        [SerializeField] private LayerMask resourceLayer;
         private LaserVisualizer _laserVisualizer;
         private ResourceRenderer _resourceRenderer;
-        private bool isCollecting;
+        private bool _isCollecting;
 
         void Awake()
         {
@@ -20,13 +20,13 @@ namespace Player
         }
         void Update()
         {
-            if (isCollecting) Collecting();
+            if (_isCollecting) Collecting();
             else HandleResourceHighlight();
         }
         public void OnCollect(InputAction.CallbackContext context)
         {
-            isCollecting = !isCollecting;
-            if (!isCollecting) 
+            _isCollecting = !_isCollecting;
+            if (!_isCollecting) 
             {
                 _laserVisualizer.HideLaser();
                 _resourceRenderer.ClearHighlight();

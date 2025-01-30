@@ -1,22 +1,25 @@
 using NavMeshPlus.Components;
 using UnityEngine;
 
-[RequireComponent(typeof(NavMeshSurface))]
-public class NavMeshUpdater : MonoBehaviour
+namespace TowerDefence.Enemies
 {
-    private NavMeshSurface _navMeshSurface;
-    private void Awake()
+    [RequireComponent(typeof(NavMeshSurface))]
+    public class NavMeshUpdater : MonoBehaviour
     {
-        _navMeshSurface = GetComponent<NavMeshSurface>();
-    }
+        private NavMeshSurface _navMeshSurface;
+        private void Awake()
+        {
+            _navMeshSurface = GetComponent<NavMeshSurface>();
+        }
 
-    private void Start()
-    {
-        _navMeshSurface.BuildNavMeshAsync();
-    }
+        private void Start()
+        {
+            _navMeshSurface.BuildNavMeshAsync();
+        }
 
-    public void UpdateNavMesh()
-    {
-        _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+        public void UpdateNavMesh()
+        {
+            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+        }
     }
 }

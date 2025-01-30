@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class YSort : MonoBehaviour
+namespace TowerDefence.Util
 {
-    [SerializeField] private bool isDynamic;
-
-    private SpriteRenderer spriteRenderer;
-
-    void Start()
+    public class YSort : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        [SerializeField] private bool isDynamic;
 
-        if (!isDynamic && spriteRenderer != null)
-            SortSprite();
-    }
+        private SpriteRenderer _spriteRenderer;
 
-    private void Update()
-    {
-        if (isDynamic && spriteRenderer != null)
-            SortSprite();
-    }
+        void Start()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
 
-    private void SortSprite()
-    {
-        spriteRenderer.sortingOrder = -(int)(transform.position.y * 100 - transform.localScale.y / 2);
+            if (!isDynamic && _spriteRenderer != null)
+                SortSprite();
+        }
+
+        private void Update()
+        {
+            if (isDynamic && _spriteRenderer != null)
+                SortSprite();
+        }
+
+        private void SortSprite()
+        {
+            _spriteRenderer.sortingOrder = -(int)(transform.position.y * 100 - transform.localScale.y / 2);
+        }
     }
 }
