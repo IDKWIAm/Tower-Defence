@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1262725932422278170}
   - component: {fileID: 9215814915639343929}
   - component: {fileID: 8075927180492456312}
+  - component: {fileID: -8792124805807966914}
   m_Layer: 0
   m_Name: Bunker_tower
   m_TagString: Untagged
@@ -102,12 +103,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRange: 5
-  firerate: 0.33
-  bulletPrefab: {fileID: 2776361409408977290, guid: 99185c25742e0ed4aa996df07f47896d, type: 3}
-  bulletSourse: {fileID: 6511280195950966795}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  firerate: 0.33
+  bulletPrefab: {fileID: 2776361409408977290, guid: 99185c25742e0ed4aa996df07f47896d, type: 3}
+  bulletSourse: {fileID: 6511280195950966795}
 --- !u!58 &7629071353704246872
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,3 +189,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDynamic: 1
+--- !u!114 &-8792124805807966914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351150399235502875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb9be2dbddccef4c8e1aca72153de96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []

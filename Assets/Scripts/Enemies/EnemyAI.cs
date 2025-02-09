@@ -1,4 +1,6 @@
-﻿using TowerDefence.House;
+﻿using TowerDefence.Health;
+using TowerDefence.House;
+using TowerDefence.Towers.Health;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +11,9 @@ namespace TowerDefence.Enemies
     {
         [SerializeField]
         private GameObject target;
+
+        [SerializeField]
+        private int damage;
 
         [SerializeField]
         private float damagePeriod;
@@ -40,11 +45,12 @@ namespace TowerDefence.Enemies
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            var houseHealth = other.gameObject.GetComponent<HouseHealth>();
+            BaseHealth structureHealth = other.gameObject.GetComponent<HouseHealth>();
+            if (!structureHealth) structureHealth = other.gameObject.GetComponent<TowerHealth>();
 
-            if (houseHealth is not null && _timer >= damagePeriod)
+            if (structureHealth is not null && _timer >= damagePeriod)
             {
-                houseHealth.Damage(5);
+                structureHealth.Damage(damage);
                 _timer = 0;
             }
 

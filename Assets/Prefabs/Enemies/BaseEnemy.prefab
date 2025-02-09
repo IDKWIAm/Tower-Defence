@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  damage: 5
   damagePeriod: 0.5
 --- !u!114 &1252966000635093010
 MonoBehaviour:
