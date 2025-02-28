@@ -4,12 +4,12 @@ namespace TowerDefence.Towers.Grid
 {
     public class GridObject : MonoBehaviour
     {
-        [SerializeField] private Vector2Int size;
+        [SerializeField] private Vector2Int _size;
         
-        public Vector2Int Size
+        public Vector2Int size
         {
-            get => size;
-            set => size = value;
+            get => _size;
+            set => _size = value;
         }
     }
 }

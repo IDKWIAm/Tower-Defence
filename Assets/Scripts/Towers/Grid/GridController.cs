@@ -22,20 +22,28 @@ namespace TowerDefence.Towers.Grid
 
         public void AddTowerCard(Tower tower, Vector2Int position)
         {
-            _grid[position.x - _gridRect.xMin, position.y - _gridRect.yMin] = tower;
+            Vector2Int extents = position + tower.size;
+
+            for (int y = position.y; y < extents.y; y++)
+            {
+                for (int x = position.x; x < extents.x; x++)
+                {
+                    _grid[x - _gridRect.xMin, y - _gridRect.yMin] = tower;
+                }
+            }
             onUpdate.Invoke();
         }
 
-        public bool CanPlace(TowerCard card, Vector2Int position)
+        public bool CanPlace(TowerCard card, Vector2Int position, Vector2Int size)
         {
             // ReSharper disable once ReplaceWithSingleAssignment.True
             var returnValue = true;
 
-            if (!InsideGrid(position))
+            if (!InsideGrid(position, size))
             {
                 returnValue = false;
             }
-            else if (IsOccupied(position))
+            else if (IsOccupied(position, size))
             {
                 returnValue = false;
             }
@@ -51,16 +59,30 @@ namespace TowerDefence.Towers.Grid
             return returnValue;
 
         }
-        private bool InsideGrid(Vector2Int position)
+        private bool InsideGrid(Vector2Int position, Vector2Int size)
         {
-            var fitsX = position.x >= _gridRect.xMin && position.x < _gridRect.xMax;
-            var fitsY = position.y >= _gridRect.yMin && position.y < _gridRect.yMax;
+            Vector2Int extents = position + size;
+
+            var fitsX = position.x >= _gridRect.xMin && extents.x < _gridRect.xMax;
+            var fitsY = position.y >= _gridRect.yMin && extents.y < _gridRect.yMax;
             
             return fitsX && fitsY;
         }
-        private bool IsOccupied(Vector2Int position)
+        private bool IsOccupied(Vector2Int position, Vector2Int size)
         {
-            return _grid[position.x - _gridRect.xMin, position.y - _gridRect.xMin] != null;
+            Vector2Int extents = position + size;
+
+            for (int y = position.y; y < extents.y; y++)
+            {
+                for (int x = position.x; x < extents.x; x++)
+                {
+                    if (_grid[x - _gridRect.xMin, y - _gridRect.yMin] != null)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

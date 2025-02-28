@@ -42,7 +42,10 @@ GameObject:
   - component: {fileID: 5537508283500402076}
   - component: {fileID: 4276084019982579148}
   - component: {fileID: 3883843415630390231}
+  - component: {fileID: -2223090760764583181}
   - component: {fileID: -7400390881054762879}
+  - component: {fileID: 304277555967536642}
+  - component: {fileID: -8282694624529269136}
   m_Layer: 0
   m_Name: Electrical_tower
   m_TagString: Untagged
@@ -140,6 +143,22 @@ MonoBehaviour:
   lightningDamage: 2
   bulletSource: {fileID: 3758338404979817620}
   projectilePrefab: {fileID: 6858639238558620946, guid: 9d6ff1b1e3392b64d8d5445850301b0c, type: 3}
+--- !u!114 &-2223090760764583181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7648941083463124064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf288085e644dc2a2b0eade015a2205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: {x: 2, y: 2}
+  renderer: {fileID: 4276084019982579148}
+  canPlaceColor: {r: 0.3726415, g: 1, b: 0.3726415, a: 0.36078432}
+  cannotPlaceColor: {r: 1, g: 0, b: 0, a: 0.49019608}
 --- !u!114 &-7400390881054762879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +175,32 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &304277555967536642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7648941083463124064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 1
+--- !u!114 &-8282694624529269136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7648941083463124064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: f2652fae

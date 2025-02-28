@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5645577105178552140}
   - component: {fileID: 1002901743905363268}
   - component: {fileID: 7629071353704246872}
-  - component: {fileID: 1262725932422278170}
   - component: {fileID: 9215814915639343929}
-  - component: {fileID: 8075927180492456312}
   - component: {fileID: -8792124805807966914}
+  - component: {fileID: 8075927180492456312}
+  - component: {fileID: 1262725932422278170}
   m_Layer: 0
   m_Name: Bunker_tower
   m_TagString: Untagged
@@ -144,22 +144,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.69
---- !u!114 &1262725932422278170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6351150399235502875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: f2652fae
 --- !u!114 &9215814915639343929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,23 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf288085e644dc2a2b0eade015a2205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  _size: {x: 2, y: 2}
   renderer: {fileID: 5645577105178552140}
   canPlaceColor: {r: 0.37254903, g: 1, b: 0.37254903, a: 0.36078432}
   cannotPlaceColor: {r: 1, g: 0, b: 0, a: 0.49019608}
---- !u!114 &8075927180492456312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6351150399235502875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDynamic: 1
 --- !u!114 &-8792124805807966914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,3 +176,32 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8075927180492456312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351150399235502875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a466246f8944dab0f69c3020ac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDynamic: 1
+--- !u!114 &1262725932422278170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351150399235502875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: f2652fae

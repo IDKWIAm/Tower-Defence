@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TowerDefence.Resources;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 
 namespace TowerDefence.Towers.Grid
 {
@@ -11,6 +9,8 @@ namespace TowerDefence.Towers.Grid
     {
         public TowerCard CardObject { get; set; }
         public TowerCardHolder ParentHolder { get; set; }
+
+        public Tilemap tilemap { get; set; }
 
         private ResourceManager _resourceManager;
 
@@ -25,6 +25,7 @@ namespace TowerDefence.Towers.Grid
             _resourceManager = FindObjectOfType<ResourceManager>();
 
             _camera = Camera.main!;
+
 
         }
         public void OnDrag(PointerEventData eventData)
@@ -48,12 +49,12 @@ namespace TowerDefence.Towers.Grid
                     {
                         _resourceManager.ModifyAmount(cost.Type, -cost.Amount);
                     });
-                var towerPosition = _draggingTower.transform.position;
-                ParentHolder.GridController.AddTowerCard(_tower,
-                    new Vector2Int(Mathf.FloorToInt(towerPosition.x / 2) * 2, Mathf.FloorToInt(towerPosition.y / 2) * 2));
-                _tower.ResetColor();
+                Vector3 towerPosition = new Vector3((int)(_draggingTower.transform.position.x), (int)(_draggingTower.transform.position.y));
+
+                Vector2Int gridPosition = (Vector2Int)(tilemap.WorldToCell(towerPosition));
                 
-                _draggingTower.transform.position = new Vector3(towerPosition.x, towerPosition.y, 0);
+                ParentHolder.GridController.AddTowerCard(_tower, gridPosition);
+                _tower.ResetColor();
             }
             else
             {
@@ -66,12 +67,23 @@ namespace TowerDefence.Towers.Grid
             _tower = _draggingTower.GetComponent<Tower>();
 
             var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector2Int position = new(Mathf.RoundToInt(mousePosition.x / 2) * 2, Mathf.RoundToInt(mousePosition.y / 2) * 2);
-            _canPlace = ParentHolder.GridController.CanPlace(CardObject, position);
+            
+            Vector2Int gridPosition = ((Vector2Int)tilemap.WorldToCell(mousePosition));
+            
+            _canPlace = ParentHolder.GridController.CanPlace(CardObject, gridPosition, _tower.size);
             _tower.ChangeColor(_canPlace);
 
-            _draggingTower.transform.position =
-                new Vector3(position.x, position.y, -1);
+            Vector3 position = tilemap.GetCellCenterWorld(((Vector3Int)gridPosition));
+
+            float offsetX = 0;
+            float offsetY = 0;
+
+            if (_tower.size.x > 1)
+                offsetX = 0.5f * Mathf.Round(_tower.size.x / 2f);
+            if (_tower.size.y > 1)
+                offsetY = 0.5f * Mathf.Round(_tower.size.y / 2f);
+            
+            _draggingTower.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, -1);
         }
     }
 }
