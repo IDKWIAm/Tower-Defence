@@ -30,6 +30,7 @@ namespace TowerDefence.Enemies
             _agent.destination = target?.transform.position ?? transform.position;
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
 
         private void OnCollisionEnter2D(Collision2D other)

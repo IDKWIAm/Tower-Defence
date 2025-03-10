@@ -49,12 +49,17 @@ namespace TowerDefence.Towers.Grid
                     {
                         _resourceManager.ModifyAmount(cost.Type, -cost.Amount);
                     });
-                Vector3 towerPosition = new Vector3((int)(_draggingTower.transform.position.x), (int)(_draggingTower.transform.position.y));
 
-                Vector2Int gridPosition = (Vector2Int)(tilemap.WorldToCell(towerPosition));
+                Vector2Int gridPosition = (Vector2Int)(tilemap.WorldToCell(_draggingTower.transform.position));
                 
                 ParentHolder.GridController.AddTowerCard(_tower, gridPosition);
                 _tower.ResetColor();
+
+                Vector3 position = tilemap.GetCellCenterWorld(((Vector3Int)gridPosition));
+
+                var child = _tower.transform.Find("sprite");
+                child.position = new Vector3(child.position.x, child.position.y, 0);
+                _draggingTower.transform.position = position;
             }
             else
             {
@@ -69,21 +74,18 @@ namespace TowerDefence.Towers.Grid
             var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             
             Vector2Int gridPosition = ((Vector2Int)tilemap.WorldToCell(mousePosition));
-            
+
             _canPlace = ParentHolder.GridController.CanPlace(CardObject, gridPosition, _tower.size);
             _tower.ChangeColor(_canPlace);
 
             Vector3 position = tilemap.GetCellCenterWorld(((Vector3Int)gridPosition));
 
-            float offsetX = 0;
-            float offsetY = 0;
+            float offsetX = 0.5f * (_tower.size.x - 1);
+            float offsetY = 0.5f * (_tower.size.y - 1);
 
-            if (_tower.size.x > 1)
-                offsetX = 0.5f * Mathf.Round(_tower.size.x / 2f);
-            if (_tower.size.y > 1)
-                offsetY = 0.5f * Mathf.Round(_tower.size.y / 2f);
-            
-            _draggingTower.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, -1);
+            _tower.transform.position = position;
+            _tower.transform.Find("sprite").position = 
+                new Vector3(_tower.transform.position.x + offsetX, _tower.transform.position.y + offsetY, -1);
         }
     }
 }
