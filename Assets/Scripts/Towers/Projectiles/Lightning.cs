@@ -7,8 +7,11 @@ namespace TowerDefence.Towers.Projectiles
     public class Lightning : MonoBehaviour
     {
         [SerializeField] private float range;
+        [SerializeField] private float lifetime;
 
         [SerializeField] private LayerMask enemyLayer;
+
+        private LineRenderer _lineRenderer;
 
         private List<GameObject> _hitEnemies = new List<GameObject>();
 
@@ -25,6 +28,18 @@ namespace TowerDefence.Towers.Projectiles
         private bool _initedLastFrame;
         private bool _stopped;
 
+        private void Start()
+        {
+            _lineRenderer = GetComponent<LineRenderer>();
+
+            _lineRenderer.SetPosition(0, transform.position);
+
+            transform.position = _target.transform.position;
+            _lineRenderer.SetPosition(1, _target.transform.position);
+            DamageCurrentTarget();
+            _chainCounter += 1;
+        }
+
         void Update()
         {
             if (_stopped) return;
@@ -35,24 +50,15 @@ namespace TowerDefence.Towers.Projectiles
                 return;
             }
 
-
             if (_cnt < 0)
             {
-                if (_maxChains > _chainCounter)
+                for (float i = Time.deltaTime; i > 0; i -= _hitDelay)
                 {
-                    _target = FindNextNearestEnemy();
-
-                    if (_target == null)
-                    {
+                    if (_maxChains > _chainCounter)
+                        Move();
+                    else 
                         StopMoving();
-                        return;
-                    }
-                    transform.position = _target.transform.position;
-                    DamageCurrentTarget();
-                    _chainCounter += 1;
-                    _cnt = _hitDelay;
                 }
-                else StopMoving();
             }
             else _cnt -= Time.deltaTime;
         }
@@ -76,6 +82,25 @@ namespace TowerDefence.Towers.Projectiles
             return nearestEnemy;
         }
 
+        private void Move()
+        {
+            _target = FindNextNearestEnemy();
+
+            if (_target == null)
+            {
+                StopMoving();
+                return;
+            }
+
+            _lineRenderer.positionCount++;
+            _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _target.transform.position);
+
+            transform.position = _target.transform.position;
+            DamageCurrentTarget();
+            _chainCounter += 1;
+            _cnt = _hitDelay;
+        }
+
         private void DamageCurrentTarget()
         {
             if (_target.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
@@ -87,7 +112,7 @@ namespace TowerDefence.Towers.Projectiles
 
         private void StopMoving()
         {
-            Invoke("SelfDestroy", 5);
+            Invoke("SelfDestroy", lifetime);
             _stopped = true;
         }
 
@@ -96,15 +121,14 @@ namespace TowerDefence.Towers.Projectiles
             Destroy(gameObject);
         }
 
-        public void Init(int maxChains, float hitDelay, int damage)
+        public void Init(int maxChains, float hitDelay, int damage, GameObject target)
         {
             _savedRange = range;
             this._maxChains = maxChains;
             this._hitDelay = hitDelay;
             this._damage = damage;
-            _target = gameObject;
+            _target = target;
             _initedLastFrame = true;
-            DamageCurrentTarget();
         }
     }
 }

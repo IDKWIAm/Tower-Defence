@@ -43,7 +43,7 @@ namespace TowerDefence.Towers.TowerAI
         void Fire()
         {
             GameObject lightning = Instantiate(projectilePrefab, bulletSource.position, Quaternion.identity);
-            lightning.GetComponent<Lightning>().Init(chainLength, lightningHitDelay, lightningDamage);
+            lightning.GetComponent<Lightning>().Init(chainLength, lightningHitDelay, lightningDamage, _target);
         }
     }
 }
