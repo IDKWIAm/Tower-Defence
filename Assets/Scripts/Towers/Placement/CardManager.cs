@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace TowerDefence.Towers.Grid
 {
-    public class CardManager : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+    public class CardManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         public TowerCard CardObject { get; set; }
         public TowerCardHolder ParentHolder { get; set; }
@@ -20,28 +20,54 @@ namespace TowerDefence.Towers.Grid
 
         private Camera _camera;
 
+        private bool _dragging;
+
+        private RectTransform _towerCardBar;
+        private float _savedAnchPos;
+
         private void Awake()
         {
             _resourceManager = FindObjectOfType<ResourceManager>();
 
             _camera = Camera.main!;
-
-
         }
-        public void OnDrag(PointerEventData eventData)
+
+        private void Start()
         {
-            if (_draggingTower != null)
-            {
-                UpdateDragPosition();
-            }
+            _towerCardBar = ParentHolder.transform.parent.GetComponent<RectTransform>();
+            _savedAnchPos = _towerCardBar.anchoredPosition.y;
         }
+
+        private void Update()
+        {
+            if (Input.GetButtonDown("Cancel"))
+                Cancel();
+
+            if (Input.GetButtonDown("Fire1"))
+                if (_dragging)
+                    Place();
+
+            if (_draggingTower != null)
+                UpdateDragPosition();
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             _draggingTower = Instantiate(CardObject.Prefab, Vector3.zero, Quaternion.identity);
 
             UpdateDragPosition();
         }
+
         public void OnPointerUp(PointerEventData eventData)
+        {
+            _dragging = true;
+
+            var anchoredPos = _towerCardBar.anchoredPosition;
+            anchoredPos = new Vector2(_towerCardBar.anchoredPosition.x, 5000);
+            _towerCardBar.anchoredPosition = anchoredPos;
+        }
+
+        private void Place()
         {
             if (_canPlace)
             {
@@ -51,7 +77,7 @@ namespace TowerDefence.Towers.Grid
                     });
 
                 Vector2Int gridPosition = (Vector2Int)(tilemap.WorldToCell(_draggingTower.transform.position));
-                
+
                 ParentHolder.GridController.AddTowerCard(_tower, gridPosition);
                 _tower.ResetColor();
 
@@ -60,10 +86,12 @@ namespace TowerDefence.Towers.Grid
                 var child = _tower.transform.Find("sprite");
                 child.position = new Vector3(child.position.x, child.position.y, 0);
                 _draggingTower.transform.position = position;
-            }
-            else
-            {
-                Destroy(_draggingTower);
+                _draggingTower = null;
+                _dragging = false;
+
+                var anchoredPos = _towerCardBar.anchoredPosition;
+                anchoredPos = new Vector2(_towerCardBar.anchoredPosition.x, _savedAnchPos);
+                _towerCardBar.anchoredPosition = anchoredPos;
             }
         }
 
@@ -86,6 +114,17 @@ namespace TowerDefence.Towers.Grid
             _tower.transform.position = position;
             _tower.transform.Find("sprite").position = 
                 new Vector3(_tower.transform.position.x + offsetX, _tower.transform.position.y + offsetY, -1);
+        }
+
+        private void Cancel()
+        {
+            if (_draggingTower != null)
+                Destroy(_draggingTower);
+            _dragging = false;
+
+            var anchoredPos = _towerCardBar.anchoredPosition;
+            anchoredPos = new Vector2(_towerCardBar.anchoredPosition.x, _savedAnchPos);
+            _towerCardBar.anchoredPosition = anchoredPos;
         }
     }
 }

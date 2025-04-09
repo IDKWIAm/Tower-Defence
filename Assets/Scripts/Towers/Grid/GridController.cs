@@ -20,7 +20,7 @@ namespace TowerDefence.Towers.Grid
             _grid = new GridObject[_gridRect.xMax - _gridRect.xMin, _gridRect.yMax - _gridRect.yMin];
         }
 
-        public void AddTowerCard(Tower tower, Vector2Int position)
+        public void AddTowerCard(GridObject tower, Vector2Int position)
         {
             Vector2Int extents = position + tower.size;
 
@@ -47,7 +47,7 @@ namespace TowerDefence.Towers.Grid
             {
                 returnValue = false;
             }
-            else if (!card.Cost.All(cost =>
+            else if (card && !card.Cost.All(cost =>
                     {
                         var resource = resourceManager.GetResource(cost.Type);
                         return resource.Amount - resource.MinAmount >= cost.Amount;

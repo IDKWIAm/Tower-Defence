@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 514268838902584294}
   - component: {fileID: 2444926411342400910}
   - component: {fileID: -7219703754751339162}
+  - component: {fileID: -6436868158461974505}
   m_Layer: 3
   m_Name: Rouin 4
   m_TagString: Untagged
@@ -174,3 +175,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDynamic: 0
+--- !u!114 &-6436868158461974505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872397207383784399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8a8328adfa54b4da6c64b4d27ca5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: {x: 1, y: 1}
