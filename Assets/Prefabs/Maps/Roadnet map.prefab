@@ -703,9 +703,9 @@ GameObject:
   - component: {fileID: 7552688930741909734}
   - component: {fileID: 6929663569575531860}
   - component: {fileID: 6479366462752236772}
-  - component: {fileID: 579461133868695907}
-  - component: {fileID: 7810302064793274036}
-  m_Layer: 0
+  - component: {fileID: 216567398577735384}
+  - component: {fileID: 7645880451994311910}
+  m_Layer: 8
   m_Name: placeholderTilemap
   m_TagString: Placeholder Tilemap
   m_Icon: {fileID: 0}
@@ -51656,7 +51656,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &579461133868695907
+--- !u!114 &216567398577735384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51671,8 +51671,8 @@ MonoBehaviour:
   m_OverrideArea: 0
   m_Area: 0
   m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
---- !u!114 &7810302064793274036
+  m_AffectedAgents: f2652fae
+--- !u!114 &7645880451994311910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51684,7 +51684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709c8d6349be44c68dff3d220992400c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AffectedAgents: ffffffff
+  m_AffectedAgents: f2652fae
   m_TileModifiers:
   - tile: {fileID: 11400000, guid: cf94be0b8a67c66449904e6be69a60d6, type: 2}
     overrideArea: 0

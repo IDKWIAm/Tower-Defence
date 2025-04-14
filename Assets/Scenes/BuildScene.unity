@@ -1254,9 +1254,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1224649449}
     - target: {fileID: 6662895465288475105, guid: 72bb0fe6853c47d4c914cbfb8dd31a7f, type: 3}
+      propertyPath: surface2D
+      value: 
+      objectReference: {fileID: 2055020485}
+    - target: {fileID: 6662895465288475105, guid: 72bb0fe6853c47d4c914cbfb8dd31a7f, type: 3}
       propertyPath: gridController
       value: 
       objectReference: {fileID: 205889719}
+    - target: {fileID: 6662895465288475105, guid: 72bb0fe6853c47d4c914cbfb8dd31a7f, type: 3}
+      propertyPath: navMeshUpdater
+      value: 
+      objectReference: {fileID: 2055020487}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1319,7 +1327,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 2
   house: {fileID: 2013638446}
-  enemyPrefab: {fileID: 3705963813496457784, guid: 34b780509791d8446bcac9f01f986dfe, type: 3}
+  enemyPrefabs:
+  - {fileID: 3705963813496457784, guid: 34b780509791d8446bcac9f01f986dfe, type: 3}
+  - {fileID: 3705963813496457784, guid: ecdb2e308f3bf1c4fa3166d16cbc94c4, type: 3}
+  - {fileID: 3705963813496457784, guid: e14b53ee50e0ab7469f4d2bf661b327a, type: 3}
   spawningPoints:
   - {fileID: 51161632}
   - {fileID: 1845913282}
@@ -1339,7 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _worldTime: {fileID: 1771030026}
   _schedule:
-  - Hour: 21
+  - Hour: 23
     Minute: 59
     _action:
       m_PersistentCalls:
@@ -1720,7 +1731,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 3f21f87d00000000a1bacc64
+  m_ApplyToSortingLayers: 3f21f87d00000000a1bacc64bdc2d915
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2050,7 +2061,9 @@ GameObject:
   - component: {fileID: 2055020486}
   - component: {fileID: 2055020485}
   - component: {fileID: 2055020484}
-  m_Layer: 0
+  - component: {fileID: 2055020487}
+  - component: {fileID: 2055020488}
+  m_Layer: 8
   m_Name: navmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2102,7 +2115,7 @@ MonoBehaviour:
   m_VoxelSize: 0.083333336
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 29fd1cbbbac761e4ea6ab3316263374a, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!4 &2055020486
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,6 +2131,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2055020487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055020483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea3da9aa99744f4ebeddca3d4f71d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2055020488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055020483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5492b7ed96378624cbcd72212fce093d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6047469345566980040
 PrefabInstance:
   m_ObjectHideFlags: 0

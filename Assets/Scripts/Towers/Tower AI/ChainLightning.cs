@@ -3,7 +3,7 @@ using TowerDefence.Towers.Projectiles;
 
 namespace TowerDefence.Towers.TowerAI
 {
-    public class ChainLightning : Tower
+    public class ChainLightning : BaseTower
     {
         [SerializeField] private float firerate;
         [SerializeField] private int chainLength;
@@ -32,7 +32,7 @@ namespace TowerDefence.Towers.TowerAI
 
             var distance = Vector2.Distance(transform.position, _target.transform.position);
 
-            if (_target != null && _fireTimer <= 0)
+            if (_target != null && _fireTimer <= 0 && placed)
             {
                 Fire();
                 _fireTimer = firerate;

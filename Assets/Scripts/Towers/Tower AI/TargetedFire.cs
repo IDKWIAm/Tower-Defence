@@ -3,7 +3,7 @@ using TowerDefence.Towers.Projectiles;
 
 namespace TowerDefence.Towers.TowerAI
 {
-    public class TargetedFire : Tower
+    public class TargetedFire : BaseTower
     {
         [SerializeField] private float firerate;
 
@@ -18,7 +18,7 @@ namespace TowerDefence.Towers.TowerAI
         {
             _target = FindNearestEnemy()?.transform;
 
-            if (_target != null && _fireTimer <= 0)
+            if (_target != null && _fireTimer <= 0 && placed)
             {
                 Fire();
                 _fireTimer = firerate;

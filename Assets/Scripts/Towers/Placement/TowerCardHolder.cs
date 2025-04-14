@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TowerDefence.Enemies;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +11,8 @@ namespace TowerDefence.Towers.Grid
         public GridController GridController => gridController;
 
         [SerializeField] private Tilemap tilemap;
+
+        [SerializeField] private NavMeshUpdater navMeshUpdater;
 
         [SerializeField] private GameObject cardPrefab;
         [SerializeField] private List<TowerCard> cardObjects;
@@ -31,7 +34,8 @@ namespace TowerDefence.Towers.Grid
             var cardManager = card.GetComponent<CardManager>();
             cardManager.CardObject = cardObject;
             cardManager.ParentHolder = this;
-            cardManager.tilemap = this.tilemap;
+            cardManager.tilemap = tilemap;
+            cardManager.navMeshUpdater = navMeshUpdater;
             
             placedCards.Add(card);
             _icon = cardObject.Icon;

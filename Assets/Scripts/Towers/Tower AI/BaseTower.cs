@@ -2,11 +2,13 @@ using UnityEngine;
 
 namespace TowerDefence.Towers.TowerAI
 {
-    public class Tower : MonoBehaviour
+    public class BaseTower : MonoBehaviour
     {
         [SerializeField] private float maxRange;
 
         [SerializeField] private LayerMask enemyLayer;
+
+        [HideInInspector] public bool placed;
 
         public GameObject FindNearestEnemy()
         {

@@ -24,6 +24,11 @@ namespace TowerDefence.Resources
             resources.ForEach(resource => resource.ClampAmount());
         }
 
+        private void Start()
+        {
+            ModifyAmount(ResourceType.Wood, 0);
+        }
+
         /// <summary>
         /// Modifies the amount of a resource with a given type and invokes change listeners for the resource with the given type.
         /// </summary>

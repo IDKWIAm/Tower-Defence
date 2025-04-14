@@ -1,4 +1,6 @@
+using TowerDefence.Enemies;
 using TowerDefence.Resources;
+using TowerDefence.Towers.TowerAI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
@@ -12,10 +14,13 @@ namespace TowerDefence.Towers.Grid
 
         public Tilemap tilemap { get; set; }
 
+        public NavMeshUpdater navMeshUpdater { get; set; }
+
         private ResourceManager _resourceManager;
 
         private GameObject _draggingTower;
-        private Tower _tower;
+        private TowerColorController _towerColorController;
+        private BaseTower _tower;
         private bool _canPlace;
 
         private Camera _camera;
@@ -55,6 +60,9 @@ namespace TowerDefence.Towers.Grid
         {
             _draggingTower = Instantiate(CardObject.Prefab, Vector3.zero, Quaternion.identity);
 
+            _towerColorController = _draggingTower.GetComponent<TowerColorController>();
+            _tower = _draggingTower.GetComponent<BaseTower>();
+
             UpdateDragPosition();
         }
 
@@ -78,12 +86,12 @@ namespace TowerDefence.Towers.Grid
 
                 Vector2Int gridPosition = (Vector2Int)(tilemap.WorldToCell(_draggingTower.transform.position));
 
-                ParentHolder.GridController.AddTowerCard(_tower, gridPosition);
-                _tower.ResetColor();
+                ParentHolder.GridController.AddTowerCard(_towerColorController, gridPosition);
+                _towerColorController.ResetColor();
 
                 Vector3 position = tilemap.GetCellCenterWorld(((Vector3Int)gridPosition));
 
-                var child = _tower.transform.Find("sprite");
+                var child = _towerColorController.transform.Find("sprite");
                 child.position = new Vector3(child.position.x, child.position.y, 0);
                 _draggingTower.transform.position = position;
                 _draggingTower = null;
@@ -92,28 +100,30 @@ namespace TowerDefence.Towers.Grid
                 var anchoredPos = _towerCardBar.anchoredPosition;
                 anchoredPos = new Vector2(_towerCardBar.anchoredPosition.x, _savedAnchPos);
                 _towerCardBar.anchoredPosition = anchoredPos;
+
+                _tower.placed = true;
+
+                navMeshUpdater.UpdateNavMesh();
             }
         }
 
         private void UpdateDragPosition()
         {
-            _tower = _draggingTower.GetComponent<Tower>();
-
             var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             
             Vector2Int gridPosition = ((Vector2Int)tilemap.WorldToCell(mousePosition));
 
-            _canPlace = ParentHolder.GridController.CanPlace(CardObject, gridPosition, _tower.size);
-            _tower.ChangeColor(_canPlace);
+            _canPlace = ParentHolder.GridController.CanPlace(CardObject, gridPosition, _towerColorController.size);
+            _towerColorController.ChangeColor(_canPlace);
 
             Vector3 position = tilemap.GetCellCenterWorld(((Vector3Int)gridPosition));
 
-            float offsetX = 0.5f * (_tower.size.x - 1);
-            float offsetY = 0.5f * (_tower.size.y - 1);
+            float offsetX = 0.5f * (_towerColorController.size.x - 1);
+            float offsetY = 0.5f * (_towerColorController.size.y - 1);
 
-            _tower.transform.position = position;
-            _tower.transform.Find("sprite").position = 
-                new Vector3(_tower.transform.position.x + offsetX, _tower.transform.position.y + offsetY, -1);
+            _towerColorController.transform.position = position;
+            _towerColorController.transform.Find("sprite").position = 
+                new Vector3(_towerColorController.transform.position.x + offsetX, _towerColorController.transform.position.y + offsetY, -1);
         }
 
         private void Cancel()

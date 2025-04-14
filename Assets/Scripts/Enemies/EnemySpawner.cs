@@ -11,7 +11,7 @@ namespace TowerDefence.Enemies
         private GameObject house;
 
         [SerializeField]
-        private GameObject enemyPrefab;
+        private GameObject[] enemyPrefabs;
 
         [SerializeField]
         private Transform[] spawningPoints;
@@ -22,7 +22,10 @@ namespace TowerDefence.Enemies
             {
                 for (var i = 0; i < enemyCount; i++)
                 {
-                    var enemy = Instantiate(enemyPrefab, (Vector2)point.position + Random.insideUnitCircle, Quaternion.identity);
+                    int enemyIdx = Random.Range(0, enemyPrefabs.Length);
+                    var enemy = Instantiate(enemyPrefabs[enemyIdx], 
+                        (Vector2)point.position + Random.insideUnitCircle, Quaternion.identity);
+
                     enemy.GetComponent<EnemyAI>()?.SetTarget(house);
                 }
             }

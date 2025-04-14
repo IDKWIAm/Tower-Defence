@@ -32,10 +32,9 @@ namespace TowerDefence.Towers.Projectiles
         {
             _lineRenderer = GetComponent<LineRenderer>();
 
-            _lineRenderer.SetPosition(0, transform.position);
-
+            _lineRenderer.SetPositions(new Vector3[] { transform.position, _target.transform.position });
             transform.position = _target.transform.position;
-            _lineRenderer.SetPosition(1, _target.transform.position);
+
             DamageCurrentTarget();
             _chainCounter += 1;
         }

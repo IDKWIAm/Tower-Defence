@@ -2,7 +2,7 @@
 
 namespace TowerDefence.Towers.Grid
 {
-    public class Tower : GridObject
+    public class TowerColorController : GridObject
     {
         [SerializeField] private new Renderer renderer;
         [SerializeField] private Color canPlaceColor;

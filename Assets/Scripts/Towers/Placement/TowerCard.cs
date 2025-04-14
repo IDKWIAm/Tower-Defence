@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace TowerDefence.Towers.Grid
 {
-    [CreateAssetMenu(fileName = "TowerCard", menuName = "Towers/New Tower Card")]
+    [CreateAssetMenu(fileName = "TowerCard", menuName = "Towers/New TowerColorController Card")]
     public class TowerCard : ScriptableObject
     {
         [SerializeField]
