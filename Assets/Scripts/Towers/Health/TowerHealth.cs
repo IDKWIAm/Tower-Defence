@@ -4,12 +4,7 @@ namespace TowerDefence.Towers.Health
 {
     public class TowerHealth : BaseHealth
     {
-        private void Awake()
-        {
-            onDeath.AddListener(Kill);
-        }
-
-        private void Kill()
+        public void Kill()
         {
             Destroy(gameObject);
         }

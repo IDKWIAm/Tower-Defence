@@ -12,7 +12,7 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Obstructed
-    cost: 3
+    cost: 898
   - name: 
     cost: 1
   - name: 

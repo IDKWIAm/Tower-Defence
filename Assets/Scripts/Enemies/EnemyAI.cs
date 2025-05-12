@@ -1,17 +1,14 @@
-﻿using TowerDefence.Health;
+﻿using Pathfinding;
+using TowerDefence.Health;
 using TowerDefence.House;
 using TowerDefence.Towers.Health;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace TowerDefence.Enemies
 {
-    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(AIDestinationSetter))]
     public class EnemyAI : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject target;
-
         [SerializeField]
         private int damage;
 
@@ -19,22 +16,19 @@ namespace TowerDefence.Enemies
         private float damagePeriod;
 
         private float _timer = 0;
-        private NavMeshAgent _agent;
+
+        private AIDestinationSetter _destinationSetter;
+
         private void Awake()
         {
-            _agent = GetComponent<NavMeshAgent>();
-        }
-
-        private void Update()
-        {
-            _agent.destination = target?.transform.position ?? transform.position;
-            _agent.updateRotation = false;
-            _agent.updateUpAxis = false;
+            _destinationSetter = GetComponent<AIDestinationSetter>();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            var houseHealth = other.gameObject.GetComponent<HouseHealth>();
+            if (other.gameObject.tag != "Sprite") return;
+
+            var houseHealth = other.transform.parent.gameObject.GetComponent<HouseHealth>();
 
             if (houseHealth is not null && _timer >= damagePeriod)
             {
@@ -45,8 +39,9 @@ namespace TowerDefence.Enemies
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            BaseHealth structureHealth = other.gameObject.GetComponent<HouseHealth>();
-            if (!structureHealth) structureHealth = other.gameObject.GetComponent<TowerHealth>();
+            if (other.gameObject.tag != "Sprite") return;
+
+            BaseHealth structureHealth = other.transform.parent.gameObject.GetComponent<BaseHealth>();
 
             if (structureHealth is not null && _timer >= damagePeriod)
             {
@@ -57,9 +52,9 @@ namespace TowerDefence.Enemies
             _timer += Time.deltaTime;
         }
 
-        public void SetTarget(GameObject newTarget)
+        public void SetTarget(Transform newTarget)
         {
-            target = newTarget;
+            _destinationSetter.target = newTarget;
         }
     }
 }

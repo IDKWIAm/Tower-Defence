@@ -15,6 +15,8 @@ namespace TowerDefence.Player
             _lineRenderer.startColor = Color.red;
             _lineRenderer.endColor = Color.red;
             _lineRenderer.positionCount = 2;
+            _lineRenderer.sortingLayerName = "Player";
+            _lineRenderer.sortingOrder = -1;
             _lineRenderer.enabled = false;
         }
 

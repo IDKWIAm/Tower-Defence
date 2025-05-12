@@ -26,7 +26,7 @@ namespace TowerDefence.Enemies
                     var enemy = Instantiate(enemyPrefabs[enemyIdx], 
                         (Vector2)point.position + Random.insideUnitCircle, Quaternion.identity);
 
-                    enemy.GetComponent<EnemyAI>()?.SetTarget(house);
+                    enemy.GetComponent<EnemyAI>()?.SetTarget(house.transform);
                 }
             }
             enemyCount += Mathf.Max(enemyCount / 5, 2);
