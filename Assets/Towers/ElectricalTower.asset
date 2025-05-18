@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e574e803700faf44991de3d58387e2a9, type: 3}
   m_Name: ElectricalTower
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 0d14b1e2a2280ac45af4ec7d9abf2b15, type: 3}
+  icon: {fileID: 21300000, guid: 60f4a7d5f174e284f8f4df19c530cc4e, type: 3}
   prefab: {fileID: 7648941083463124064, guid: 98eeb021801fad142982882089787329, type: 3}
   cost:
   - type: 0

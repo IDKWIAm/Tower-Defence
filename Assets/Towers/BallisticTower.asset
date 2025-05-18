@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e574e803700faf44991de3d58387e2a9, type: 3}
   m_Name: BallisticTower
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 4a53869cc3660fa47b0191795e13757e, type: 3}
+  icon: {fileID: 21300000, guid: c48587be3ec108f4bb53e989881594b2, type: 3}
   prefab: {fileID: 361148117146395986, guid: 18e29b322e6a41445bb1c61e5656be90, type: 3}
   cost:
   - type: 0
