@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 3910999589164864023}
   - component: {fileID: 9194319272376853284}
   - component: {fileID: 452068035224275187}
+  - component: {fileID: 8555280318264207072}
   m_Layer: 0
   m_Name: house
   m_TagString: Untagged
@@ -285,3 +286,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 4, y: 3}
+--- !u!114 &8555280318264207072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5146553715786430642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04f7193ff39bd243bc40d71a7689bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRange: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  placed: 0
+  enemyPriority: 9999

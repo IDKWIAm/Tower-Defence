@@ -427,6 +427,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   placed: 0
+  enemyPriority: 5
   firerate: 1
   chainLength: 4
   lightningHitDelay: 0.02

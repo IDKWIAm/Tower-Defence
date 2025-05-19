@@ -52,17 +52,18 @@ namespace TowerDefence.NavMeshAddons
             }
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.up * transform.localScale.y / 2 + Vector2.up / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.x / 2 + Vector2.right / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.y / 2 + Vector2.down / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * transform.localScale.x / 2 + Vector2.left / 4);
-
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.up * transform.localScale.y / 2 + Vector2.up / 4 + Vector2.right * transform.localScale.x / 2 + Vector2.right / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.y / 2 + Vector2.right / 4 + Vector2.down * transform.localScale.x / 2 + Vector2.down / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.y / 2 + Vector2.down / 4 + Vector2.left * transform.localScale.x / 2 + Vector2.left / 4);
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * transform.localScale.y / 2 + Vector2.left / 4 + Vector2.up * transform.localScale.x / 2 + Vector2.up / 4);
-        }
+        // Visualization of ray ends
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.up * transform.localScale.y / 2 + Vector2.up / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.x / 2 + Vector2.right / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.y / 2 + Vector2.down / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * transform.localScale.x / 2 + Vector2.left / 4);
+        //
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.up * transform.localScale.y / 2 + Vector2.up / 4 + Vector2.right * transform.localScale.x / 2 + Vector2.right / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.y / 2 + Vector2.right / 4 + Vector2.down * transform.localScale.x / 2 + Vector2.down / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.y / 2 + Vector2.down / 4 + Vector2.left * transform.localScale.x / 2 + Vector2.left / 4);
+        //    Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * transform.localScale.y / 2 + Vector2.left / 4 + Vector2.up * transform.localScale.x / 2 + Vector2.up / 4);
+        //}
     }
 }

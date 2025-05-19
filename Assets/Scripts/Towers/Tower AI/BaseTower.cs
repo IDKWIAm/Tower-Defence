@@ -10,6 +10,8 @@ namespace TowerDefence.Towers.TowerAI
 
         [HideInInspector] public bool placed;
 
+        public int enemyPriority;
+
         public GameObject FindNearestEnemy()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, maxRange, enemyLayer);

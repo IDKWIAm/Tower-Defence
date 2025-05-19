@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7769115459894038804}
   - component: {fileID: 4967420486658930744}
   - component: {fileID: 3935234463719224099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sprite
   m_TagString: Sprite
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -395,9 +395,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   placed: 0
+  enemyPriority: 5
   firerate: 0.33
   bulletPrefab: {fileID: 2776361409408977290, guid: 99185c25742e0ed4aa996df07f47896d, type: 3}
-  bulletSourse: {fileID: 6511280195950966795}
+  bulletSourse: {fileID: 7701024308390580794}
 --- !u!114 &2978741412949080515
 MonoBehaviour:
   m_ObjectHideFlags: 0
