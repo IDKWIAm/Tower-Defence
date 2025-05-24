@@ -7,6 +7,7 @@ TagManager:
   - Grid Controller
   - Placeholder Tilemap
   - Sprite
+  - Resource Manager
   layers:
   - Default
   - TransparentFX

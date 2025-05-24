@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e574e803700faf44991de3d58387e2a9, type: 3}
+  m_Name: Mining Drill
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 944a1349dd0090548ab92d265cce54bc, type: 3}
+  prefab: {fileID: 6761162462130216516, guid: 806366eb549d4b5449f77e697b7015fb, type: 3}
+  cost:
+  - type: 0
+    amount: 20

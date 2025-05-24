@@ -83,6 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8e22eb27814ee648a895ac8271389aa, type: 2}
   - {fileID: 11400000, guid: 52f871792ae0cdb43b042d08ffdec6b0, type: 2}
   - {fileID: 11400000, guid: 005152466d4a8c048abdeb986beb2ff7, type: 2}
+  - {fileID: 11400000, guid: 45b2c24691d633b459fe2a34a1592092, type: 2}
   placedCards: []
 --- !u!1 &6427106244204978446
 GameObject:
