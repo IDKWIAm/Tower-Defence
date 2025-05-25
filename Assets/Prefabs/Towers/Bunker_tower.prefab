@@ -109,7 +109,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744178392966248250}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -390,13 +390,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567e92361491dab4e94c5f849602d11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 5
+  maxRange: 4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   placed: 0
   enemyPriority: 5
-  firerate: 0.33
+  firerate: 0.25
   bulletPrefab: {fileID: 2776361409408977290, guid: 99185c25742e0ed4aa996df07f47896d, type: 3}
   bulletSourse: {fileID: 7701024308390580794}
 --- !u!114 &2978741412949080515

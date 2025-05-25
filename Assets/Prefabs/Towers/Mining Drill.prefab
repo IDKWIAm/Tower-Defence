@@ -109,7 +109,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510088209141622290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -269,7 +269,7 @@ MonoBehaviour:
   placed: 0
   enemyPriority: 10
   resourceType: 0
-  amount: 20
+  amount: 12
 --- !u!114 &2141163505303767086
 MonoBehaviour:
   m_ObjectHideFlags: 0

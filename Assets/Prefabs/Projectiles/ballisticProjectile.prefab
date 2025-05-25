@@ -131,7 +131,7 @@ MonoBehaviour:
   startSpeed: 3
   projectileSpeed: 1
   explosionRadius: 1.5
-  explosionDamage: 2
+  explosionDamage: 4
   rb: {fileID: 3733152662196374429}
   particles: {fileID: -8624089214762067400}
 --- !u!199 &-7870801323072311960

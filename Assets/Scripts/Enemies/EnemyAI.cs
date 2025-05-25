@@ -115,6 +115,8 @@ namespace TowerDefence.Enemies
             {
                 if (collision.transform.parent.TryGetComponent<BaseTower>(out BaseTower tower))
                 {
+                    if (tower.placed == false) return;
+
                     if (_towersInSight == null) _towersInSight = new List<BaseTower>();
                     _towersInSight.Add(tower);
                 }

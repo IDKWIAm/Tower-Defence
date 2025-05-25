@@ -99,6 +99,8 @@ namespace TowerDefence.Towers.Grid
                 anchoredPos = new Vector2(_towerCardBar.anchoredPosition.x, _savedAnchPos);
                 _towerCardBar.anchoredPosition = anchoredPos;
 
+                _draggingTower.GetComponentInChildren<Collider2D>().enabled = true;
+
                 _tower.placed = true;
 
                 _draggingTower.GetComponentInChildren<TagSetter>().SetTag(1);

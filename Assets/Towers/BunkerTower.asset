@@ -16,4 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 6351150399235502875, guid: 3b97597e16140e44ba82a6adeccd98b3, type: 3}
   cost:
   - type: 0
-    amount: 11
+    amount: 10

@@ -8,6 +8,12 @@ namespace TowerDefence.Enemies
         private int enemyCount;
 
         [SerializeField]
+        private int additivePercent;
+
+        [SerializeField]
+        private int minIncreace;
+
+        [SerializeField]
         private GameObject house;
 
         [SerializeField]
@@ -29,7 +35,7 @@ namespace TowerDefence.Enemies
                     enemy.GetComponent<EnemyAI>()?.SetTarget(house.transform);
                 }
             }
-            enemyCount += Mathf.Max(enemyCount / 5, 2);
+            enemyCount += Mathf.Max((int)(enemyCount * (1f + (float)additivePercent / 100f)) - enemyCount, minIncreace);
         }
     }
 }

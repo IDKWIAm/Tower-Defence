@@ -110,7 +110,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4622586064788262455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfabd4fd8cd728f46bf6d36098216281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 4
+  maxRange: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -431,7 +431,7 @@ MonoBehaviour:
   firerate: 1
   chainLength: 4
   lightningHitDelay: 0.02
-  lightningDamage: 1
+  lightningDamage: 2
   bulletSource: {fileID: 3758338404979817620}
   projectilePrefab: {fileID: 6858639238558620946, guid: 9d6ff1b1e3392b64d8d5445850301b0c, type: 3}
 --- !u!114 &-7400390881054762879
